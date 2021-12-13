@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LaboratoryBottle
 {
-    static class Program
+    static class MainClass
     {
         /// <summary>
         /// Главная точка входа для приложения.
@@ -16,7 +13,7 @@ namespace LaboratoryBottle
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }

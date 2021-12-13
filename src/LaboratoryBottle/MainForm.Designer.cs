@@ -1,6 +1,6 @@
 ﻿namespace LaboratoryBottle
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.wallThicknessLabel = new System.Windows.Forms.Label();
+            this.widthLabel = new System.Windows.Forms.Label();
+            this.heightLabel = new System.Windows.Forms.Label();
+            this.wallThicknessComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.widthComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.heightComboBox = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.handleRadiusComboBox = new System.Windows.Forms.ComboBox();
+            this.handleBaseRadiusComboBox = new System.Windows.Forms.ComboBox();
+            this.coverRadiusComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.handleLengthComboBox = new System.Windows.Forms.ComboBox();
+            this.coverRadiusLabel = new System.Windows.Forms.Label();
+            this.handleBaseRadiusLabel = new System.Windows.Forms.Label();
+            this.handleRadiusLabel = new System.Windows.Forms.Label();
+            this.handleLengthLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buildButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,7 +74,7 @@
             this.groupBox1.Location = new System.Drawing.Point(445, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(359, 426);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Размеры колбы";
             // 
@@ -84,16 +84,16 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.17241F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.82759F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
-            this.tableLayoutPanel1.Controls.Add(this.label10, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox7, 1, 2);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.Controls.Add(this.wallThicknessLabel, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.widthLabel, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.heightLabel, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.wallThicknessComboBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.widthComboBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.heightComboBox, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -103,44 +103,45 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(343, 77);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // label10
+            // wallThicknessLabel
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(257, 57);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "(7-11) мм";
+            this.wallThicknessLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.wallThicknessLabel.AutoSize = true;
+            this.wallThicknessLabel.Location = new System.Drawing.Point(243, 57);
+            this.wallThicknessLabel.Name = "wallThicknessLabel";
+            this.wallThicknessLabel.Size = new System.Drawing.Size(53, 13);
+            this.wallThicknessLabel.TabIndex = 8;
+            this.wallThicknessLabel.Text = "(7-20) мм";
             // 
-            // label9
+            // widthLabel
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(257, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 13);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "(200-400) мм";
+            this.widthLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.widthLabel.AutoSize = true;
+            this.widthLabel.Location = new System.Drawing.Point(243, 31);
+            this.widthLabel.Name = "widthLabel";
+            this.widthLabel.Size = new System.Drawing.Size(71, 13);
+            this.widthLabel.TabIndex = 7;
+            this.widthLabel.Text = "(200-400) мм";
             // 
-            // label8
+            // heightLabel
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(257, 6);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "(300-650) мм";
+            this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.heightLabel.AutoSize = true;
+            this.heightLabel.Location = new System.Drawing.Point(243, 6);
+            this.heightLabel.Name = "heightLabel";
+            this.heightLabel.Size = new System.Drawing.Size(71, 13);
+            this.heightLabel.TabIndex = 5;
+            this.heightLabel.Text = "(300-650) мм";
             // 
-            // comboBox7
+            // wallThicknessComboBox
             // 
-            this.comboBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(143, 53);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(108, 21);
-            this.comboBox7.TabIndex = 6;
+            this.wallThicknessComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.wallThicknessComboBox.FormattingEnabled = true;
+            this.wallThicknessComboBox.Location = new System.Drawing.Point(135, 53);
+            this.wallThicknessComboBox.Name = "wallThicknessComboBox";
+            this.wallThicknessComboBox.Size = new System.Drawing.Size(102, 21);
+            this.wallThicknessComboBox.TabIndex = 7;
+            this.wallThicknessComboBox.TextUpdate += new System.EventHandler(this.wallThicknessComboBox_TextUpdate);
             // 
             // label7
             // 
@@ -152,19 +153,20 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Толщина стенки A";
             // 
-            // comboBox2
+            // widthComboBox
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.widthComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.widthComboBox.FormattingEnabled = true;
+            this.widthComboBox.Items.AddRange(new object[] {
             "200",
             "250",
             "300",
             "400"});
-            this.comboBox2.Location = new System.Drawing.Point(143, 28);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(108, 21);
-            this.comboBox2.TabIndex = 4;
+            this.widthComboBox.Location = new System.Drawing.Point(135, 28);
+            this.widthComboBox.Name = "widthComboBox";
+            this.widthComboBox.Size = new System.Drawing.Size(102, 21);
+            this.widthComboBox.TabIndex = 6;
+            this.widthComboBox.TextUpdate += new System.EventHandler(this.widthComboBox_TextUpdate);
             // 
             // label1
             // 
@@ -186,15 +188,16 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Высота H";
             // 
-            // comboBox1
+            // heightComboBox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(108, 21);
-            this.comboBox1.TabIndex = 3;
+            this.heightComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.heightComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.heightComboBox.FormattingEnabled = true;
+            this.heightComboBox.Location = new System.Drawing.Point(135, 3);
+            this.heightComboBox.Name = "heightComboBox";
+            this.heightComboBox.Size = new System.Drawing.Size(102, 21);
+            this.heightComboBox.TabIndex = 5;
+            this.heightComboBox.TextUpdate += new System.EventHandler(this.heightComboBox_TextUpdate);
             // 
             // pictureBox1
             // 
@@ -215,7 +218,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(427, 341);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Размеры Крышки";
             // 
@@ -224,7 +227,7 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(155, 143);
+            this.pictureBox3.Location = new System.Drawing.Point(6, 124);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(262, 187);
             this.pictureBox3.TabIndex = 10;
@@ -235,18 +238,18 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.27338F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.72662F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox4, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox5, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox6, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.handleRadiusComboBox, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.handleBaseRadiusComboBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.coverRadiusComboBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.comboBox3, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label11, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label12, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label13, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label14, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.handleLengthComboBox, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.coverRadiusLabel, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.handleBaseRadiusLabel, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.handleRadiusLabel, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.handleLengthLabel, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 19);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -278,33 +281,38 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Радиус ручки R";
             // 
-            // comboBox4
+            // handleRadiusComboBox
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(164, 51);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(109, 21);
-            this.comboBox4.TabIndex = 5;
+            this.handleRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.handleRadiusComboBox.Enabled = false;
+            this.handleRadiusComboBox.FormattingEnabled = true;
+            this.handleRadiusComboBox.Location = new System.Drawing.Point(156, 51);
+            this.handleRadiusComboBox.Name = "handleRadiusComboBox";
+            this.handleRadiusComboBox.Size = new System.Drawing.Size(103, 21);
+            this.handleRadiusComboBox.TabIndex = 3;
+            this.handleRadiusComboBox.TextUpdate += new System.EventHandler(this.handleRadiusComboBox_TextUpdate);
             // 
-            // comboBox5
+            // handleBaseRadiusComboBox
             // 
-            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(164, 27);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(109, 21);
-            this.comboBox5.TabIndex = 4;
+            this.handleBaseRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.handleBaseRadiusComboBox.Enabled = false;
+            this.handleBaseRadiusComboBox.FormattingEnabled = true;
+            this.handleBaseRadiusComboBox.Location = new System.Drawing.Point(156, 27);
+            this.handleBaseRadiusComboBox.Name = "handleBaseRadiusComboBox";
+            this.handleBaseRadiusComboBox.Size = new System.Drawing.Size(103, 21);
+            this.handleBaseRadiusComboBox.TabIndex = 2;
+            this.handleBaseRadiusComboBox.TextUpdate += new System.EventHandler(this.handleBaseRadiusComboBox_TextUpdate);
             // 
-            // comboBox6
+            // coverRadiusComboBox
             // 
-            this.comboBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(164, 3);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(109, 21);
-            this.comboBox6.TabIndex = 3;
+            this.coverRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.coverRadiusComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.coverRadiusComboBox.FormattingEnabled = true;
+            this.coverRadiusComboBox.Location = new System.Drawing.Point(156, 3);
+            this.coverRadiusComboBox.Name = "coverRadiusComboBox";
+            this.coverRadiusComboBox.Size = new System.Drawing.Size(103, 21);
+            this.coverRadiusComboBox.TabIndex = 1;
+            this.coverRadiusComboBox.TextUpdate += new System.EventHandler(this.coverRadiusComboBox_TextUpdate);
             // 
             // label5
             // 
@@ -316,54 +324,55 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Радиус крышки B";
             // 
-            // comboBox3
+            // handleLengthComboBox
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(164, 75);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(109, 21);
-            this.comboBox3.TabIndex = 8;
+            this.handleLengthComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.handleLengthComboBox.FormattingEnabled = true;
+            this.handleLengthComboBox.Location = new System.Drawing.Point(156, 75);
+            this.handleLengthComboBox.Name = "handleLengthComboBox";
+            this.handleLengthComboBox.Size = new System.Drawing.Size(103, 21);
+            this.handleLengthComboBox.TabIndex = 4;
+            this.handleLengthComboBox.TextUpdate += new System.EventHandler(this.handleLengthComboBox_TextUpdate);
             // 
-            // label11
+            // coverRadiusLabel
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(279, 5);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "(200-400) мм";
+            this.coverRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.coverRadiusLabel.AutoSize = true;
+            this.coverRadiusLabel.Location = new System.Drawing.Point(265, 5);
+            this.coverRadiusLabel.Name = "coverRadiusLabel";
+            this.coverRadiusLabel.Size = new System.Drawing.Size(71, 13);
+            this.coverRadiusLabel.TabIndex = 9;
+            this.coverRadiusLabel.Text = "(200-400) мм";
             // 
-            // label12
+            // handleBaseRadiusLabel
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(279, 29);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 13);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "(10-50) мм";
+            this.handleBaseRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.handleBaseRadiusLabel.AutoSize = true;
+            this.handleBaseRadiusLabel.Location = new System.Drawing.Point(265, 29);
+            this.handleBaseRadiusLabel.Name = "handleBaseRadiusLabel";
+            this.handleBaseRadiusLabel.Size = new System.Drawing.Size(59, 13);
+            this.handleBaseRadiusLabel.TabIndex = 10;
+            this.handleBaseRadiusLabel.Text = "(10-50) мм";
             // 
-            // label13
+            // handleRadiusLabel
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(279, 53);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "(30-40) мм";
+            this.handleRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.handleRadiusLabel.AutoSize = true;
+            this.handleRadiusLabel.Location = new System.Drawing.Point(265, 53);
+            this.handleRadiusLabel.Name = "handleRadiusLabel";
+            this.handleRadiusLabel.Size = new System.Drawing.Size(59, 13);
+            this.handleRadiusLabel.TabIndex = 11;
+            this.handleRadiusLabel.Text = "(30-40) мм";
             // 
-            // label14
+            // handleLengthLabel
             // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(279, 79);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 13);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "(10-30) мм";
+            this.handleLengthLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.handleLengthLabel.AutoSize = true;
+            this.handleLengthLabel.Location = new System.Drawing.Point(265, 79);
+            this.handleLengthLabel.Name = "handleLengthLabel";
+            this.handleLengthLabel.Size = new System.Drawing.Size(59, 13);
+            this.handleLengthLabel.TabIndex = 12;
+            this.handleLengthLabel.Text = "(10-30) мм";
             // 
             // label4
             // 
@@ -380,40 +389,41 @@
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 124);
+            this.pictureBox2.Location = new System.Drawing.Point(274, 124);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(143, 206);
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // buildButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.LightGray;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 405);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Построить";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buildButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buildButton.BackColor = System.Drawing.Color.LightGray;
+            this.buildButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buildButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buildButton.Location = new System.Drawing.Point(12, 405);
+            this.buildButton.Name = "buildButton";
+            this.buildButton.Size = new System.Drawing.Size(106, 33);
+            this.buildButton.TabIndex = 7;
+            this.buildButton.Text = "Построить";
+            this.buildButton.UseVisualStyleBackColor = false;
+            this.buildButton.Click += new System.EventHandler(this.buildButton_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(808, 442);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buildButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Построитель лабораторных стаканов";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -431,30 +441,30 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox widthComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox heightComboBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox handleRadiusComboBox;
+        private System.Windows.Forms.ComboBox handleBaseRadiusComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox coverRadiusComboBox;
+        private System.Windows.Forms.ComboBox wallThicknessComboBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox handleLengthComboBox;
+        private System.Windows.Forms.Label wallThicknessLabel;
+        private System.Windows.Forms.Label widthLabel;
+        private System.Windows.Forms.Label heightLabel;
+        private System.Windows.Forms.Label coverRadiusLabel;
+        private System.Windows.Forms.Label handleBaseRadiusLabel;
+        private System.Windows.Forms.Label handleRadiusLabel;
+        private System.Windows.Forms.Label handleLengthLabel;
+        private System.Windows.Forms.Button buildButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
