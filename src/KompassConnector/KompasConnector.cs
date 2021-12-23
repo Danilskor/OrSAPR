@@ -39,9 +39,9 @@ namespace KompasConnector
             {
                 try
                 {
-                    var t = Type.GetTypeFromProgID(ProgId);
+                    var type = Type.GetTypeFromProgID(ProgId);
                     // if the program is not open yet, then trying to open it
-                    Kompas = (KompasObject)Activator.CreateInstance(t);
+                    Kompas = (KompasObject)Activator.CreateInstance(type);
                 }
                 catch (Exception)
                 {
@@ -53,8 +53,11 @@ namespace KompasConnector
             Kompas.ActivateControllerAPI();
             
             var doc3D = (ksDocument3D) Kompas.Document3D();
-            doc3D.Create();
-            KsPart = (ksPart)doc3D.GetPart((short)Part_Type.pTop_Part);
+            if (KsPart == null)
+            {
+                doc3D.Create();
+                KsPart = (ksPart) doc3D.GetPart((short) Part_Type.pTop_Part);
+            }
         }
     }
 }
