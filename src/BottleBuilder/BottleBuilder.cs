@@ -4,8 +4,6 @@ using BottleParameters;
 using Kompas6API5;
 using Kompas6Constants;
 using Kompas6Constants3D;
-using BottleParameters;
-using KompasAPI7;
 
 namespace BottleBuilder
 {

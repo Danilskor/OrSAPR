@@ -24,7 +24,7 @@ namespace BottleParameters
         /// <param name="value">Value of th parameter</param>
         /// <param name="parameterType">Type of the parameter</param>
         /// <param name="parameters">Lis of the parameters</param>
-        private void AddParameter(double value, ParameterTypeEnum parameterType, List<Parameter> parameters)
+        public void AddParameter(double value, ParameterTypeEnum parameterType, List<Parameter> parameters)
         {
             var newParameter = new Parameter(value, parameterType, bottleBoundarySize);
             if (parameters.Any(parameter => newParameter.ParameterType == parameter.ParameterType))

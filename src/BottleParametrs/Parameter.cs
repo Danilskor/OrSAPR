@@ -24,23 +24,16 @@ namespace BottleParameters
             get => _parameterValue;
             set
             {
-                if (_minimumValue == -1 || _maximumValue == -1)
+                if (IsNumberInRange(value, _minimumValue, _maximumValue))
                 {
-                    throw new ArgumentException($"{ParameterType} not set");
+                    _parameterValue = value;
                 }
                 else
                 {
-                    if (IsNumberInRange(value, _minimumValue, _maximumValue))
                     {
-                        _parameterValue = value;
-                    }
-                    else
-                    {
-                        {
-                            throw new ArgumentException(
-                                $"{ParameterType} should be more then {_minimumValue} " +
-                                $"and less then {_maximumValue} ");
-                        }
+                        throw new ArgumentException(
+                            $"{ParameterType} should be more then {_minimumValue} " +
+                            $"and less then {_maximumValue} ");
                     }
                 }
             }
@@ -74,7 +67,7 @@ namespace BottleParameters
         /// <returns>True if value include and false if not include</returns>
         private bool IsNumberInRange(double value, double min, double max)
         {
-            return value >= min || value <= max;
+            return value >= min && value <= max;
         }
 
     }
