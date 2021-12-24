@@ -5,48 +5,114 @@ using Kompas6API5;
 using Kompas6Constants;
 using Kompas6Constants3D;
 
+
 namespace BottleBuilder
 {
+    /// <summary>
+    /// Class for build laboratory bottle 
+    /// </summary>
     public class Builder
     {
+        /// <summary>
+        /// Variable for connecting with Kompas
+        /// </summary>
         private Konnector _connector;
 
-        private double _coverRadius; 
+        /// <summary>
+        /// Cover radius
+        /// </summary>
+        private double _coverRadius;
 
-        private double _handleBaseRadius; 
+        /// <summary>
+        /// Handle Base Radius
+        /// </summary>
+        private double _handleBaseRadius;
 
+        /// <summary>
+        /// Handle Radius
+        /// </summary>
         private double _handleRadius;
 
-        private double _handleLength; 
+        /// <summary>
+        /// Handle Length
+        /// </summary>
+        private double _handleLength;
 
-        private double _height; 
+        /// <summary>
+        /// Bottle height
+        /// </summary>
+        private double _height;
 
-        private double _width; 
+        /// <summary>
+        /// Bottle width
+        /// </summary>
+        private double _width;
 
-        private double _wallThickness; 
-         
+        /// <summary>
+        /// Wall Thickness
+        /// </summary>
+        private double _wallThickness;
+
+        /// <summary>
+        /// Coordinate X pointing to a face or surface to be filleted
+        /// </summary>
         private double _filletX;
 
+        /// <summary>
+        /// Coordinate Y pointing to a face or surface to be filleted
+        /// </summary>
         private double _filletY;
 
+        /// <summary>
+        /// Coordinate Z pointing to a face or surface to be filleted
+        /// </summary>
         private double _filletZ;
 
+        /// <summary>
+        /// Fillet radius
+        /// </summary>
         private double _filletRadius;
-        
+
+        /// <summary>
+        /// Coordinate X of centre circle
+        /// </summary>
         private double _centreCircleX;
 
+        /// <summary>
+        /// Coordinate Y of centre circle
+        /// </summary>
         private double _centreCircleY;
 
+        /// <summary>
+        /// Circle radius
+        /// </summary>
         private double _circleRadius;
-        
+
+        /// <summary>
+        /// Coordinate X pointing to a surface when will be create sketch
+        /// </summary>
         private double _sketchX;
 
+        /// <summary>
+        /// Coordinate Y pointing to a surface when will be create sketch
+        /// </summary>
         private double _sketchY;
 
+        /// <summary>
+        /// Coordinate Z pointing to a surface when will be create sketch
+        /// </summary>
         private double _sketchZ;
 
+        /// <summary>
+        /// Variable pointing to sketch
+        /// </summary>
         ksSketchDefinition _sketch;
 
+        /// <summary>
+        /// Method for building bottle
+        /// </summary>
+        /// <param name="konnector">Variable for connecting with Kompas</param>
+        /// <param name="parameters">List of parameters</param>
         public void BuildBottle(Konnector konnector, Parameters parameters)
         {
             _connector = konnector;
@@ -70,6 +136,9 @@ namespace BottleBuilder
             BuildHandle();
         }
 
+        /// <summary>
+        /// Method for building handle
+        /// </summary>
         private void BuildHandle()
         {
             var angle = Math.Atan((_coverRadius / 2 - _width / 8 * 3 - _wallThickness) / (_height / 4 + _wallThickness)) / Math.PI * 180;
@@ -115,7 +184,9 @@ namespace BottleBuilder
             CreateFaceFillet(_filletX, _filletY, _filletZ, _filletRadius);
         }
 
-
+        /// <summary>
+        /// Method for building base of the bottle
+        /// </summary>
         private void BuildBottleBase()
         {
             _sketchX = 0;
@@ -163,6 +234,9 @@ namespace BottleBuilder
             CreateEdgeFillet(_filletX, _filletY, _filletZ, _wallThickness);
         }
 
+        /// <summary>
+        /// Method for building top of the bottle
+        /// </summary>
         private void BuildBottleTop()
         {
             _sketchX = _width / 2 - _wallThickness - 2;
@@ -181,11 +255,16 @@ namespace BottleBuilder
             CreateEdgeFillet(_coverRadius / 2, 0, _height + _wallThickness, _wallThickness / 2);
             CreateEdgeFillet(_coverRadius / 2 - _wallThickness, 0, _height + _wallThickness, _wallThickness / 2);
         }
+
         /// <summary>
-        /// Создание эскиза
+        /// Method for creating sketch
         /// </summary>
-        /// <param name="planeType">Выбор плоскости</param>
-        /// <returns>ksSketchDefinition</returns>
+        /// <param name="planeType">Type of the plane</param>
+        /// <param name="isFirstSketch"></param>
+        /// <param name="x">Coordinate X pointing to a surface when will be create sketch</param>
+        /// <param name="y">Coordinate Y pointing to a surface when will be create sketch</param>
+        /// <param name="z">Coordinate Z pointing to a surface when will be create sketch</param>
+        /// <returns name=sketchDefinition> Definition of the sketch</returns>
         private ksSketchDefinition CreateSketch(Obj3dType planeType, 
             bool isFirstSketch, double x, double y, double z)
         {
@@ -193,11 +272,11 @@ namespace BottleBuilder
                 .KsPart
                 .GetDefaultEntity((short)planeType);
 
-            var _sketch = (ksEntity)_connector
+            var sketch = (ksEntity)_connector
                 .KsPart
                 .NewEntity((short)Obj3dType.o3d_sketch);
 
-            var sketchDefinition = (ksSketchDefinition)_sketch.GetDefinition();
+            var sketchDefinition = (ksSketchDefinition)sketch.GetDefinition();
             if (!isFirstSketch)
             {
                 ksEntityCollection iCollection = 
@@ -207,11 +286,18 @@ namespace BottleBuilder
             }
             sketchDefinition.SetPlane(plane);
 
-            _sketch.Create();
+            sketch.Create();
             return sketchDefinition;
         }
 
-        private void CreateCircle(ksSketchDefinition _sketch, double centreX, double centreY, double radius)
+        /// <summary>
+        /// Method for creating circle on sketch
+        /// </summary>
+        /// <param name="sketch">Sketch</param>
+        /// <param name="centreX">Coordinate X of centre circle</param>
+        /// <param name="centreY">Coordinate Y of centre circle</param>
+        /// <param name="radius"> Radius of the circle</param>
+        private void CreateCircle(ksSketchDefinition sketch, double centreX, double centreY, double radius)
         {
             var circle = (ksCircleParam)_connector
                 .Kompas
@@ -220,16 +306,18 @@ namespace BottleBuilder
             circle.style = 1;
             var doc2D = (ksDocument2D)_sketch.BeginEdit();
             doc2D.ksCircle(centreX, centreY, radius, circle.style);
-            _sketch.EndEdit();
+            sketch.EndEdit();
         }
 
         /// <summary>
-        /// Выдавливание по эскизу
+        /// Extrude from sketch
         /// </summary>
-        /// <param name="sketchDefinition">Эскиз</param>
-        /// <param name="thickness">Толщина</param>
+        /// <param name="sketch">Sketch</param>
+        /// <param name="thickness">Thickness of extrude</param>
+        /// <param name="side">Side</param>
+        /// <param name="draftValue">Draft value</param>
         private void PressOutSketch(
-            ksSketchDefinition sketchDefinition,
+            ksSketchDefinition sketch,
             double thickness, bool side, double draftValue)
         {
             var extrusionEntity = (ksEntity)_connector
@@ -241,7 +329,7 @@ namespace BottleBuilder
             
             extrusionDefinition.SetSideParam(side, 0, thickness);
 
-            extrusionDefinition.SetSketch(sketchDefinition);
+            extrusionDefinition.SetSketch(sketch);
             ExtrusionParam extrusionParam =  extrusionDefinition.ExtrusionParam();
             extrusionParam.depthNormal = thickness;
             extrusionParam.draftValueNormal = draftValue;
@@ -250,11 +338,14 @@ namespace BottleBuilder
         }
 
         /// <summary>
-        /// Выдавливание по эскизу
+        /// Extrude a thin-walled feature from sketch
         /// </summary>
-        /// <param name="sketchDefinition">Эскиз</param>
-        /// <param name="thickness">Толщина</param>
-        private void PressOutSketchThickness( ksSketchDefinition sketchDefinition,
+        /// <param name="sketch">Sketch</param>
+        /// <param name="height">Height of extrude</param>
+        /// <param name="wallThickness">Thickness of extrude</param>
+        /// <param name="side">Side</param>
+        /// <param name="draftValue">Draft value</param>
+        private void PressOutSketchThickness( ksSketchDefinition sketch,
             double height, double wallThickness, bool side, double draftValue)
         {
 
@@ -269,12 +360,17 @@ namespace BottleBuilder
             extrusionDefinition.SetThinParam(true, 0, wallThickness);
             
             
-            extrusionDefinition.SetSketch(sketchDefinition);
+            extrusionDefinition.SetSketch(sketch);
             ExtrusionParam extrusionParam = extrusionDefinition.ExtrusionParam();
             extrusionParam.draftValueNormal = draftValue;
             extrusionEntity.Create();
         }
 
+        /// <summary>
+        /// Add fillet in fillet array
+        /// </summary>
+        /// <param name="radius">Fillet radius</param>
+        /// <returns name="filletEntity">Fillet entity</returns>
         private ksEntity AddFillet(double radius)
         {
             ksEntity filletEntity = (ksEntity)_connector
@@ -290,6 +386,14 @@ namespace BottleBuilder
             return filletEntity;
         }
 
+        /// <summary>
+        /// Create сhamfer
+        /// </summary>
+        /// <param name="x">Coordinate X pointing to a face to be сhamfered</param>
+        /// <param name="y">Coordinate Y pointing to a face to be сhamfered</param>
+        /// <param name="z">Coordinate Z pointing to a face to be сhamfered</param>
+        /// <param name="distance1"></param>
+        /// <param name="distance2"></param>
         private void CreateChamfer(double x, double y, double z, double distance1, double distance2)
         {
             ksEntity chamferEntity = (ksEntity)_connector
@@ -310,6 +414,13 @@ namespace BottleBuilder
             chamferEntity.Create();
         }
 
+        /// <summary>
+        /// Create fillet of the face
+        /// </summary>
+        /// <param name="x">Coordinate X pointing to a face or surface to be filleted</param>
+        /// <param name="y">Coordinate Y pointing to a face or surface to be filleted</param>
+        /// <param name="z">Coordinate Z pointing to a face or surface to be filleted</param>
+        /// <param name="radius">Fillet radius</param>
         private void CreateFaceFillet(double x, double y, double z, double radius)
         {
             ksEntity filletEntity = AddFillet(radius);
@@ -325,6 +436,13 @@ namespace BottleBuilder
             filletEntity.Create();
         }
 
+        /// <summary>
+        /// Create fillet of the edge
+        /// </summary>
+        /// <param name="x">Coordinate X pointing to a face or surface to be filleted</param>
+        /// <param name="y">Coordinate Y pointing to a face or surface to be filleted</param>
+        /// <param name="z">Coordinate Z pointing to a face or surface to be filleted</param>
+        /// <param name="radius">Fillet radius</param>
         private void CreateEdgeFillet(double x, double y, double z, double radius)
         {
             ksEntity filletEntity = AddFillet(radius);
