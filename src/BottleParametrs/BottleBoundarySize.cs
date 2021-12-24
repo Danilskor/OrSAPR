@@ -89,6 +89,13 @@
         {
             set => _minHandleRadius = value;
         }
+        /// <summary>
+        ///Property of MAximum Handle Radius
+        /// </summary>
+        public double MaxHandleRadius
+        {
+            set => _maxHandleRadius = value;
+        }
 
         /// <summary>
         /// Finds the maximum value of a parameter depending on the type of the parameter

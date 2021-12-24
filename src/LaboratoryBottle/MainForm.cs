@@ -27,6 +27,9 @@ namespace LaboratoryBottle
         /// </summary>
         private BottleBoundarySize bottleBoundarySize;
 
+        /// <summary>
+        /// Variable for connecting with Kompas
+        /// </summary>
         public Konnector _kompasConnector = new Konnector();
 
         public MainForm()
@@ -140,9 +143,11 @@ namespace LaboratoryBottle
             if (value >= bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.HandleBaseRadius) &&
                 value <= bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.HandleBaseRadius))
             {
-                double handleRadiusMin = value;
-                handleBaseRadiusLabel.Text = $"({handleRadiusMin}-40) мм";
+                double handleRadiusMin = value + 20;
+                double handleRadiusMax = handleRadiusMin + 30;
+                handleRadiusLabel.Text = $"({handleRadiusMin}-{handleRadiusMax}) мм";
                 bottleBoundarySize.MinHandleRadius = handleRadiusMin;
+                bottleBoundarySize.MaxHandleRadius = handleRadiusMax;
                 handleRadiusComboBox.Enabled = true;
             }
             else
@@ -191,19 +196,11 @@ namespace LaboratoryBottle
 
         private void buildButton_Click(object sender, EventArgs e)
         {
-            _bottleParameters.bottleBoundarySize = bottleBoundarySize;
-            try
-            {
-                _kompasConnector.OpenKompas();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.ToString());
-            }
-
+            
             try
             {
                 _bottleParameters = new Parameters();
+                _bottleParameters.bottleBoundarySize = bottleBoundarySize;
 
                 double coverRadius = ConvertStringToDouble(coverRadiusComboBox.Text);
                 double handleBaseRadius = ConvertStringToDouble(handleBaseRadiusComboBox.Text);
@@ -221,6 +218,16 @@ namespace LaboratoryBottle
             {
                 buildButton.Enabled = false;
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OKCancel);
+                return;
+            }
+            try
+            {
+                _kompasConnector.OpenKompas();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+                return;
             }
             var builder = new Builder();
             builder.BuildBottle(_kompasConnector, _bottleParameters);
