@@ -12,6 +12,7 @@ namespace LaboratoryBottle
 {
     public partial class MainForm : Form
     {
+        //TODO:
         /// <summary>
         /// BottleBuilder
         /// </summary>
@@ -22,16 +23,19 @@ namespace LaboratoryBottle
         /// </summary>
         private Parameters _bottleParameters = new Parameters();
 
+        //TODO: RSDN
         /// <summary>
         /// Bottle Boundary Size
         /// </summary>
         private BottleBoundarySize bottleBoundarySize;
 
+        //TODO:
         /// <summary>
         /// Variable for connecting with Kompas
         /// </summary>
         public Konnector _kompasConnector = new Konnector();
 
+         //TODO: XML
         public MainForm()
         {
             InitializeComponent();
@@ -106,11 +110,13 @@ namespace LaboratoryBottle
             return valueDigitsNumber;
         }
 
+         //TODO: XML
         private void MainForm_Load(object sender, EventArgs e)
         {
             bottleBoundarySize = _bottleParameters.bottleBoundarySize;
         }
 
+        //TODO: Убрать проверки из mainform
         private void coverRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
 
@@ -235,10 +241,12 @@ namespace LaboratoryBottle
 
         }
 
+         //TODO: XML
         private void defaultParametersButton_Click(object sender, EventArgs e)
         {
             _bottleParameters.SetDefaultParameters(_bottleParameters.ParametersList);
 
+            //TODO: RSDN
             coverRadiusComboBox.Text =
                 _bottleParameters.FindParameter(ParameterTypeEnum.CoverRadius, _bottleParameters.ParametersList).ToString();
             handleBaseRadiusComboBox.Text = 

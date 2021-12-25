@@ -41,6 +41,7 @@ namespace Validator
             }
         }
 
+         //TODO: XML
         /// <summary>
         /// Сhecks if the double value is included in the interval
         /// </summary>

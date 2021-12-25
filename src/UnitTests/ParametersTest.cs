@@ -8,6 +8,7 @@ namespace UnitTests
     [TestFixture]
     public class ParametersTest
     {
+        //TODO:
         private Parameters _parameters = new Parameters();
 
         [TestCase(TestName = "Positive parameters setter")]

@@ -118,6 +118,7 @@ namespace BottleBuilder
             _connector = konnector;
             _connector.GetNewPart();
 
+            //TODO: переписать
             _coverRadius = parameters.FindParameter(ParameterTypeEnum.CoverRadius,
             parameters.ParametersList); 
             _handleBaseRadius = parameters.FindParameter(ParameterTypeEnum.HandleBaseRadius,
@@ -143,10 +144,12 @@ namespace BottleBuilder
         /// </summary>
         private void BuildHandle()
         {
+            //TODO: RSDN
             var angle = Math.Atan((_coverRadius / 2 - _width / 8 * 3 - _wallThickness) / (_height / 4 + _wallThickness)) / Math.PI * 180;
             PressOutSketch(_sketch, _height / 4 + _wallThickness, true, angle);
             CreateChamfer(_coverRadius / 2 - _wallThickness, 0, _height + _wallThickness * 2, _wallThickness, _wallThickness);
 
+            //TODO: Переписать все использования этих полей. Поля удалить. Создать класс/структуру 3D точки.
             _sketchX = 0;
             _sketchY = 0;
             _sketchZ = _height + _wallThickness * 2;

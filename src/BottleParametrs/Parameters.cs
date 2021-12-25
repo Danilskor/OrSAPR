@@ -8,6 +8,7 @@ namespace BottleParameters
     /// </summary>
     public class Parameters
     {
+        //TODO: Переписать класс, используя инкапсуляцию на список параметров.
         /// <summary>
         /// Parameters list
         /// </summary>
@@ -36,6 +37,7 @@ namespace BottleParameters
             parameters.Add(newParameter);
         }
 
+         //TODO: XML
         public double FindParameter(ParameterTypeEnum parameterType, List<Parameter> parameters)
         {
             foreach (var parameter in parameters)
@@ -71,6 +73,7 @@ namespace BottleParameters
             AddParameter(width, ParameterTypeEnum.Width, parametersList);
             AddParameter(wallThickness, ParameterTypeEnum.WallThickness, parametersList);
         }
+
         /// <summary>
         /// Set default parameters
         /// </summary>
