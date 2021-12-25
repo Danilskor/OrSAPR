@@ -87,6 +87,7 @@ namespace LaboratoryBottle
             double.TryParse(text, out double numberResult);
             return numberResult;
         }
+
         /// <summary>
         /// Сalculates the number of digits in the integer part of a number
         /// </summary>
@@ -231,6 +232,30 @@ namespace LaboratoryBottle
             }
             var builder = new Builder();
             builder.BuildBottle(_kompasConnector, _bottleParameters);
+
+        }
+
+        private void defaultParametersButton_Click(object sender, EventArgs e)
+        {
+            _bottleParameters.SetDefaultParameters(_bottleParameters.ParametersList);
+
+            coverRadiusComboBox.Text =
+                _bottleParameters.FindParameter(ParameterTypeEnum.CoverRadius, _bottleParameters.ParametersList).ToString();
+            handleBaseRadiusComboBox.Text = 
+                _bottleParameters.FindParameter(ParameterTypeEnum.HandleBaseRadius, _bottleParameters.ParametersList).ToString();
+            wallThicknessComboBox.Text = 
+                _bottleParameters.FindParameter(ParameterTypeEnum.WallThickness, _bottleParameters.ParametersList).ToString();
+            heightComboBox.Text = 
+                _bottleParameters.FindParameter(ParameterTypeEnum.Height, _bottleParameters.ParametersList).ToString();
+            handleRadiusComboBox.Text = 
+                _bottleParameters.FindParameter(ParameterTypeEnum.HandleRadius, _bottleParameters.ParametersList).ToString();
+           handleLengthComboBox.Text = 
+               _bottleParameters.FindParameter(ParameterTypeEnum.HandleLength, _bottleParameters.ParametersList).ToString();
+            widthComboBox.Text = 
+                _bottleParameters.FindParameter(ParameterTypeEnum.Width, _bottleParameters.ParametersList).ToString();
+
+            handleBaseRadiusComboBox.Enabled = true;
+            handleRadiusComboBox.Enabled = true;
 
         }
     }

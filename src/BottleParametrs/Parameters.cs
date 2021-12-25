@@ -31,6 +31,8 @@ namespace BottleParameters
             {
                 return;
             }
+
+            ParameterDependencies(value, parameterType);
             parameters.Add(newParameter);
         }
 
@@ -68,6 +70,32 @@ namespace BottleParameters
             AddParameter(height, ParameterTypeEnum.Height, parametersList);
             AddParameter(width, ParameterTypeEnum.Width, parametersList);
             AddParameter(wallThickness, ParameterTypeEnum.WallThickness, parametersList);
+        }
+        /// <summary>
+        /// Set default parameters
+        /// </summary>
+        /// <param name="parametersList">Parameters List</param>
+        public void SetDefaultParameters(List<Parameter> parametersList)
+        {
+            this.ParametersList.Clear();
+            AddAllParameters(200, 10, 30, 10, 300, 200, 7, parametersList);
+        }
+
+        private void ParameterDependencies(double value, ParameterTypeEnum parameterType)
+        {
+            if (parameterType == ParameterTypeEnum.CoverRadius)
+            {
+                double handleBaseRadiusMax = value / 4;
+                bottleBoundarySize.MaxHandleBaseRadius = handleBaseRadiusMax;
+            }
+
+            if (parameterType == ParameterTypeEnum.HandleBaseRadius)
+            {
+                double handleRadiusMin = value + 20;
+                double handleRadiusMax = handleRadiusMin + 30;
+                bottleBoundarySize.MinHandleRadius = handleRadiusMin;
+                bottleBoundarySize.MaxHandleRadius = handleRadiusMax;
+            }
         }
     }
 }

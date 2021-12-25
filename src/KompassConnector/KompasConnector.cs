@@ -52,12 +52,13 @@ namespace KompasConnector
             Kompas.Visible = true;
             Kompas.ActivateControllerAPI();
             
-            var doc3D = (ksDocument3D) Kompas.Document3D();
-            if (KsPart == null)
-            {
-                doc3D.Create();
-                KsPart = (ksPart) doc3D.GetPart((short) Part_Type.pTop_Part);
-            }
+        }
+
+        public void GetNewPart()
+        {
+            var doc3D = (ksDocument3D)Kompas.Document3D();
+            doc3D.Create();
+            KsPart = (ksPart)doc3D.GetPart((short)Part_Type.pTop_Part);
         }
     }
 }

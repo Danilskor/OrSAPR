@@ -116,6 +116,8 @@ namespace BottleBuilder
         public void BuildBottle(Konnector konnector, Parameters parameters)
         {
             _connector = konnector;
+            _connector.GetNewPart();
+
             _coverRadius = parameters.FindParameter(ParameterTypeEnum.CoverRadius,
             parameters.ParametersList); 
             _handleBaseRadius = parameters.FindParameter(ParameterTypeEnum.HandleBaseRadius,
