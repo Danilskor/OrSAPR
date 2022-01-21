@@ -226,7 +226,7 @@ namespace LaboratoryBottle
          //TODO: XML
         private void defaultParametersButton_Click(object sender, EventArgs e)
         {
-            _bottleParameters.SetDefaultParameters(_bottleParameters.ParametersList);
+            _bottleParameters.SetDefaultParameters();
 
             coverRadiusComboBox.Text =
                 _bottleParameters.CoverRadius.ParameterValue.ToString();
@@ -254,7 +254,20 @@ namespace LaboratoryBottle
             heightComboBox.BackColor = Color.White;
             widthComboBox.BackColor = Color.White;
             wallThicknessComboBox.BackColor = Color.White;
+        }
 
+        private void straightFlaskRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _bottleParameters.IsBottleStraight = 
+                straightFlaskRadioButton.Checked;
+
+            straightFlaskHandlePictureBox.Visible = straightFlaskRadioButton.Checked;
+            aboveStraightFlaskHandlePictureBox.Visible = straightFlaskRadioButton.Checked;
+            straightFlaskPictureBox.Visible = straightFlaskRadioButton.Checked;
+
+            flaskHandlePictureBox.Visible = !straightFlaskRadioButton.Checked;
+            aboveFlaskHandlePictureBox.Visible = !straightFlaskRadioButton.Checked;
+            flaskPictureBox.Visible = !straightFlaskRadioButton.Checked;
         }
     }
 }

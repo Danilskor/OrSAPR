@@ -11,6 +11,10 @@ namespace BottleParameters
         /// <summary>
         /// 
         /// </summary>
+        private bool _isBottleStraight = false;
+        /// <summary>
+        /// 
+        /// </summary>
         private Parameter _coverRadius = new Parameter(minCoverRadius, maxCoverRadius);
 
         /// <summary>
@@ -44,11 +48,6 @@ namespace BottleParameters
         private Parameter _wallThickness = new Parameter(minWallThickness, maxWallThickness);
 
         //TODO: Переписать класс, используя инкапсуляцию на список параметров.
-        /// <summary>
-        /// Parameters list
-        /// </summary>
-        public List<Parameter> ParametersList { get; set; } = new List<Parameter>();
-
         /// <summary>
         ///Minimum value of Cover Radius
         /// </summary>
@@ -183,33 +182,18 @@ namespace BottleParameters
             set => _wallThickness = value;
         }
 
-        /// <summary>
-        /// List of the parameters contains all parameters
-        /// </summary>
-        /// <param name="coverRadius">Cover radius</param>
-        /// <param name="handleBaseRadius">Handle Base Radius</param>
-        /// <param name="handleRadius">Handle Radius</param>
-        /// <param name="handleLength">Handle Length</param>
-        /// <param name="height">Height</param>
-        /// <param name="width">Width</param>
-        /// <param name="wallThickness">Wall Thickness</param>
-        public void AddAllParameters(double coverRadius, double handleBaseRadius, double handleRadius,
-            double handleLength, double height, double width, double wallThickness)
+        public bool IsBottleStraight
         {
-            SetParameter(this.CoverRadius, coverRadius);
-            SetParameter(this.HandleBaseRadius, coverRadius);
-            SetParameter(this.HandleRadius, coverRadius);
-            SetParameter(this.HandleLength, coverRadius);
-            SetParameter(this.Height, coverRadius);
-            SetParameter(this.Width, coverRadius);
-            SetParameter(this.WallThickness, coverRadius);
+            get => _isBottleStraight;
+
+            set => _isBottleStraight = value;
         }
 
         /// <summary>
         /// Set default parameters
         /// </summary>
         /// <param name="parametersList">Parameters List</param>
-        public void SetDefaultParameters(List<Parameter> parametersList)
+        public void SetDefaultParameters()
         {
             this.CoverRadius.ParameterValue = 200;
             this.HandleBaseRadius.ParameterValue = 10;
@@ -218,15 +202,6 @@ namespace BottleParameters
             this.Height.ParameterValue = 300;
             this.Width.ParameterValue = 200;
             this.WallThickness.ParameterValue = 7;
-        }
-
-        public Parameter SetParameter(Parameter parameter, double value)
-        {
-            var newParameter = new Parameter();
-            newParameter = parameter;
-            newParameter.ParameterValue = value;
-            parameter = newParameter;
-            return newParameter;
         }
     }
 }
