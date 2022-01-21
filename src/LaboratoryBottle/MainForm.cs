@@ -1,11 +1,9 @@
-﻿using System;
-using System.Drawing;
-using System.Reflection;
-using BottleBuilder;
+﻿using BottleBuilder;
 using BottleParameters;
-using System.Windows.Forms;
 using KompasConnector;
-using static System.Reflection.Pointer;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 using static Validator.Validator;
 
 namespace LaboratoryBottle
@@ -22,12 +20,6 @@ namespace LaboratoryBottle
         /// Parameters
         /// </summary>
         private Parameters _bottleParameters = new Parameters();
-
-        //TODO: RSDN
-        /// <summary>
-        /// Bottle Boundary Size
-        /// </summary>
-        private BottleBoundarySize bottleBoundarySize;
 
         //TODO:
         /// <summary>
@@ -58,21 +50,11 @@ namespace LaboratoryBottle
                 AssertStringOnNumbers(comboBox.Text, fieldName);
 
                 var value = ConvertStringToDouble(comboBox.Text);
-                AssertNumberOnRange(value, 0, max, fieldName);
-                
-                
-                if (CalculateValueDigitsNumber(value)
-                    == CalculateValueDigitsNumber(min) &&
-                    value < min)
-                {
-                    comboBox.BackColor = Color.Salmon;
-                    buildButton.Enabled = false;
-                }
-                else
-                {
-                    comboBox.BackColor = Color.White;
-                    buildButton.Enabled = true;
-                }
+                AssertNumberOnRange(value, min, max, fieldName);
+               
+                comboBox.BackColor = Color.White;
+                buildButton.Enabled = true;
+
             }
             catch (ArgumentException exception)
             {
@@ -113,51 +95,59 @@ namespace LaboratoryBottle
          //TODO: XML
         private void MainForm_Load(object sender, EventArgs e)
         {
-            bottleBoundarySize = _bottleParameters.bottleBoundarySize;
+            
         }
 
         //TODO: Убрать проверки из mainform
         private void coverRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
-
-            ComboboxInputError(coverRadiusComboBox,"cover radius", 
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.CoverRadius),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.CoverRadius));
-
             var value = ConvertStringToDouble(coverRadiusComboBox.Text);
 
-            if (value >= bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.CoverRadius) && 
-                value <= bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.CoverRadius))
+            ComboboxInputError(coverRadiusComboBox, "cover radius",
+                _bottleParameters.CoverRadius.MinimumValue,
+                _bottleParameters.CoverRadius.MaximumValue);
+
+            try
             {
-                double handleBaseRadiusMax = value / 4;
-                handleBaseRadiusLabel.Text = $"(10-{handleBaseRadiusMax}) мм";
-                bottleBoundarySize.MaxHandleBaseRadius = handleBaseRadiusMax;
+                var newParameter = _bottleParameters.CoverRadius;
+                newParameter.ParameterValue = value;
+                _bottleParameters.CoverRadius = newParameter;
+
+                AssertNumberOnRange(value, _bottleParameters.CoverRadius.MinimumValue,
+                    _bottleParameters.CoverRadius.MaximumValue, "cover radius");
                 handleBaseRadiusComboBox.Enabled = true;
+                handleBaseRadiusLabel.Text = $"(10-" +
+                                             $"{_bottleParameters.HandleBaseRadius.MaximumValue.ToString()}) мм";
             }
-            else
+            catch (Exception exception)
             {
                 handleBaseRadiusComboBox.Enabled = false;
             }
+
+
         }
 
         private void handleBaseRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
-            ComboboxInputError(handleBaseRadiusComboBox, "handle radius", 
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.HandleBaseRadius),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.HandleBaseRadius));
-
             var value = ConvertStringToDouble(handleBaseRadiusComboBox.Text);
-            if (value >= bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.HandleBaseRadius) &&
-                value <= bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.HandleBaseRadius))
+
+            ComboboxInputError(handleBaseRadiusComboBox, "handle base radius",
+                _bottleParameters.HandleBaseRadius.MinimumValue,
+                _bottleParameters.HandleBaseRadius.MaximumValue);
+
+            try
             {
-                double handleRadiusMin = value + 20;
-                double handleRadiusMax = handleRadiusMin + 30;
-                handleRadiusLabel.Text = $"({handleRadiusMin}-{handleRadiusMax}) мм";
-                bottleBoundarySize.MinHandleRadius = handleRadiusMin;
-                bottleBoundarySize.MaxHandleRadius = handleRadiusMax;
+                var newParameter = _bottleParameters.HandleBaseRadius;
+                newParameter.ParameterValue = value;
+                _bottleParameters.HandleBaseRadius = newParameter;
+
+                AssertNumberOnRange(value, _bottleParameters.HandleBaseRadius.MinimumValue,
+                    _bottleParameters.HandleBaseRadius.MaximumValue, "handle base radius");
+                handleRadiusLabel.Text = $"({_bottleParameters.HandleRadius.MinimumValue}-" +
+                                         $"{_bottleParameters.HandleRadius.MaximumValue}) мм";
                 handleRadiusComboBox.Enabled = true;
             }
-            else
+            catch (Exception exception)
             {
                 handleRadiusComboBox.Enabled = false;
             }
@@ -165,40 +155,38 @@ namespace LaboratoryBottle
 
         private void handleRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
-            ComboboxInputError(handleRadiusComboBox, "handle radius", 
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.HandleRadius),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.HandleRadius));
+            ComboboxInputError(handleRadiusComboBox, "handle radius",
+                _bottleParameters.HandleRadius.MinimumValue,
+                _bottleParameters.HandleRadius.MaximumValue);
         }
 
         private void handleLengthComboBox_TextUpdate(object sender, EventArgs e)
         {
-
-            double.TryParse(handleLengthComboBox.Text, out double numberResult);
-
+            
             ComboboxInputError(handleLengthComboBox, "handle length",
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.HandleLength),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.HandleLength));
+                _bottleParameters.HandleLength.MinimumValue,
+                _bottleParameters.HandleLength.MaximumValue);
         }
 
         private void heightComboBox_TextUpdate(object sender, EventArgs e)
         {
             ComboboxInputError(heightComboBox, "height",
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.Height),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.Height));
+                _bottleParameters.Height.MinimumValue,
+                _bottleParameters.Height.MaximumValue);
         }
 
         private void widthComboBox_TextUpdate(object sender, EventArgs e)
         {
             ComboboxInputError(widthComboBox, "width",
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.Width),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.Width));
+                _bottleParameters.Width.MinimumValue,
+                _bottleParameters.Width.MaximumValue);
         }
 
         private void wallThicknessComboBox_TextUpdate(object sender, EventArgs e)
         {
-            ComboboxInputError(wallThicknessComboBox, "handle radius",
-                bottleBoundarySize.MinimumParameterValue(ParameterTypeEnum.WallThickness),
-                bottleBoundarySize.MaximumParameterValue(ParameterTypeEnum.WallThickness));
+            ComboboxInputError(wallThicknessComboBox, "wall thickness",
+                _bottleParameters.WallThickness.MinimumValue,
+                _bottleParameters.WallThickness.MaximumValue);
         }
 
         private void buildButton_Click(object sender, EventArgs e)
@@ -206,20 +194,14 @@ namespace LaboratoryBottle
             
             try
             {
-                _bottleParameters = new Parameters();
-                _bottleParameters.bottleBoundarySize = bottleBoundarySize;
+                _bottleParameters.CoverRadius.ParameterValue = ConvertStringToDouble(coverRadiusComboBox.Text);
+                _bottleParameters.HandleBaseRadius.ParameterValue = ConvertStringToDouble(handleBaseRadiusComboBox.Text);
+                _bottleParameters.HandleRadius.ParameterValue = ConvertStringToDouble(handleRadiusComboBox.Text);
+                _bottleParameters.HandleLength.ParameterValue = ConvertStringToDouble(handleLengthComboBox.Text);
+                _bottleParameters.Height.ParameterValue = ConvertStringToDouble(heightComboBox.Text);
+                _bottleParameters.Width.ParameterValue = ConvertStringToDouble(widthComboBox.Text);
+                _bottleParameters.WallThickness.ParameterValue = ConvertStringToDouble(wallThicknessComboBox.Text);
 
-                double coverRadius = ConvertStringToDouble(coverRadiusComboBox.Text);
-                double handleBaseRadius = ConvertStringToDouble(handleBaseRadiusComboBox.Text);
-                double handleRadius = ConvertStringToDouble(handleRadiusComboBox.Text);
-                double handleLength = ConvertStringToDouble(handleLengthComboBox.Text);
-                double height = ConvertStringToDouble(heightComboBox.Text);
-                double width = ConvertStringToDouble(widthComboBox.Text);
-                double wallThickness = ConvertStringToDouble(wallThicknessComboBox.Text);
-
-                _bottleParameters.AddAllParameters(coverRadius,
-                    handleBaseRadius, handleRadius, handleLength,
-                    height, width, wallThickness, _bottleParameters.ParametersList);
             }
             catch (Exception exception)
             {
@@ -246,24 +228,32 @@ namespace LaboratoryBottle
         {
             _bottleParameters.SetDefaultParameters(_bottleParameters.ParametersList);
 
-            //TODO: RSDN
             coverRadiusComboBox.Text =
-                _bottleParameters.FindParameter(ParameterTypeEnum.CoverRadius, _bottleParameters.ParametersList).ToString();
+                _bottleParameters.CoverRadius.ParameterValue.ToString();
             handleBaseRadiusComboBox.Text = 
-                _bottleParameters.FindParameter(ParameterTypeEnum.HandleBaseRadius, _bottleParameters.ParametersList).ToString();
+                _bottleParameters.HandleBaseRadius.ParameterValue.ToString();
             wallThicknessComboBox.Text = 
-                _bottleParameters.FindParameter(ParameterTypeEnum.WallThickness, _bottleParameters.ParametersList).ToString();
+                _bottleParameters.WallThickness.ParameterValue.ToString();
             heightComboBox.Text = 
-                _bottleParameters.FindParameter(ParameterTypeEnum.Height, _bottleParameters.ParametersList).ToString();
+                _bottleParameters.Height.ParameterValue.ToString();
             handleRadiusComboBox.Text = 
-                _bottleParameters.FindParameter(ParameterTypeEnum.HandleRadius, _bottleParameters.ParametersList).ToString();
+                _bottleParameters.HandleRadius.ParameterValue.ToString();
            handleLengthComboBox.Text = 
-               _bottleParameters.FindParameter(ParameterTypeEnum.HandleLength, _bottleParameters.ParametersList).ToString();
+               _bottleParameters.HandleLength.ParameterValue.ToString();
             widthComboBox.Text = 
-                _bottleParameters.FindParameter(ParameterTypeEnum.Width, _bottleParameters.ParametersList).ToString();
+                _bottleParameters.Width.ParameterValue.ToString();
 
             handleBaseRadiusComboBox.Enabled = true;
             handleRadiusComboBox.Enabled = true;
+            buildButton.Enabled = true;
+
+            coverRadiusComboBox.BackColor = Color.White;
+            handleBaseRadiusComboBox.BackColor = Color.White;
+            handleRadiusComboBox.BackColor = Color.White;
+            handleLengthLabel.BackColor = Color.White;
+            heightComboBox.BackColor = Color.White;
+            widthComboBox.BackColor = Color.White;
+            wallThicknessComboBox.BackColor = Color.White;
 
         }
     }

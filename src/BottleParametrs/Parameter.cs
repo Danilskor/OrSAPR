@@ -12,9 +12,15 @@ namespace BottleParameters
         /// </summary>
         private double _parameterValue;
 
-        private double _minimumValue;
+        /// <summary>
+        /// Property of the minimum parameter value
+        /// </summary>
+        public double MinimumValue { get; set; }
 
-        private double _maximumValue;
+        /// <summary>
+        /// Property of the maximum parameter value
+        /// </summary>
+        public double MaximumValue { get; set; }
 
         /// <summary>
         /// Property of the parameter value
@@ -24,7 +30,7 @@ namespace BottleParameters
             get => _parameterValue;
             set
             {
-                if (IsNumberInRange(value, _minimumValue, _maximumValue))
+                if (IsNumberInRange(value, MinimumValue, MaximumValue))
                 {
                     _parameterValue = value;
                 }
@@ -32,13 +38,13 @@ namespace BottleParameters
                 {
                     {
                         throw new ArgumentException(
-                            $"{ParameterType} should be more then {_minimumValue} " +
-                            $"and less then {_maximumValue} ");
+                            $"{ParameterType} should be more then {MinimumValue} " +
+                            $"and less then {MaximumValue} ");
                     }
                 }
             }
         }
-
+        
         /// <summary>
         /// Property of the parameter type
         /// </summary>
@@ -47,16 +53,15 @@ namespace BottleParameters
         /// <summary>
         /// Constructor of the parameter
         /// </summary>
-        /// <param name="parameterValue"> Value of the parameter</param>
-        /// <param name="parameterType">Type of the parameter</param>
-        public Parameter(double parameterValue, ParameterTypeEnum parameterType, 
-           BottleBoundarySize bottleBoundarySize)
+        /// <param name="minimumValue"> Value of the parameter</param>
+        /// <param name="maximumValue">Type of the parameter</param>
+        public Parameter(double minimumValue, double maximumValue)
         {
-            _minimumValue = bottleBoundarySize.MinimumParameterValue(parameterType);
-            _maximumValue = bottleBoundarySize.MaximumParameterValue(parameterType);
-            ParameterType = parameterType;
-            ParameterValue = parameterValue;
+            MinimumValue = minimumValue;
+            MaximumValue = maximumValue;
         }
+
+        public Parameter() {}
 
         /// <summary>
         /// Сhecks if the parameter value is included in the interval 
@@ -70,5 +75,6 @@ namespace BottleParameters
             return value >= min && value <= max;
         }
 
+        
     }
 }
