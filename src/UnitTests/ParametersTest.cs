@@ -38,7 +38,8 @@ namespace UnitTests
                 }
                 else
                 {
-                    propertyName = propertyName.Replace("BottleParameters.Parameter ", "");
+                    propertyName = propertyName.Replace(
+                        "BottleParameters.Parameter ", "");
                     var actualProperty = actual.GetType().GetProperty(propertyName);
                     dynamic expectPropertyObject = expectedProperty.GetValue(expected);
                     dynamic actualPropertyObject = actualProperty.GetValue(actual);
@@ -49,15 +50,22 @@ namespace UnitTests
             }
         }
 
-        [TestCase(201, 200, 300, "CoverRadius", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, "HandleBaseRadius", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, "HandleRadius", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, "HandleLength", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, "Height", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, "Width", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, "WallThickness", TestName = "Positive parameters get")]
-        public void Parameters_GetCorrectValue(double testParameterValue, double minimumValue, double maximumValue,
-            string parameterName)
+        [TestCase(201, 200, 300, 
+            "CoverRadius", TestName = "Positive parameters get")]
+        [TestCase(201, 200, 300, 
+            "HandleBaseRadius", TestName = "Positive parameters get")]
+        [TestCase(201, 200, 300, 
+            "HandleRadius", TestName = "Positive parameters get")]
+        [TestCase(201, 200, 300, 
+            "HandleLength", TestName = "Positive parameters get")]
+        [TestCase(201, 200, 300, 
+            "Height", TestName = "Positive parameters get")]
+        [TestCase(201, 200, 300, 
+            "Width", TestName = "Positive parameters get")]
+        [TestCase(201, 200, 300, 
+            "WallThickness", TestName = "Positive parameters get")]
+        public void Parameters_GetCorrectValue(double testParameterValue, 
+            double minimumValue, double maximumValue, string parameterName)
         {
             //Act
             var actual = new Parameters();
@@ -76,12 +84,16 @@ namespace UnitTests
         public void Parameters_SetCorrectCoverRadius()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            var testParameter = new Parameter(200, 400);
+            testParameter.ParameterValue = 200;
 
             testParameters.CoverRadius = testParameter;
 
+            var dependedMaximum = testParameter.ParameterValue / 4;
+
             Assert.AreEqual(testParameters.CoverRadius, testParameter);
+            Assert.AreEqual(testParameters.HandleBaseRadius.MaximumValue,
+                dependedMaximum);
         }
 
         [TestCase(TestName = "Positive Handle Base Radius set")]
@@ -93,7 +105,12 @@ namespace UnitTests
 
             testParameters.HandleBaseRadius = testParameter;
 
+            double handleRadiusMin = testParameter.ParameterValue + 20;
+            double handleRadiusMax = handleRadiusMin + 30;
+
             Assert.AreEqual(testParameters.HandleBaseRadius, testParameter);
+            Assert.AreEqual(testParameters.HandleRadius.MinimumValue, handleRadiusMin);
+            Assert.AreEqual(testParameters.HandleRadius.MaximumValue, handleRadiusMax);
         }
 
         [TestCase(TestName = "Positive Handle Radius set")]
