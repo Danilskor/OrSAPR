@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BottleParameters
 {   
@@ -13,14 +15,32 @@ namespace BottleParameters
         private double _parameterValue;
 
         /// <summary>
+        /// Minimum value
+        /// </summary>
+        private double _minimumValue = -1;
+
+        /// <summary>
+        /// Maximum value
+        /// </summary>
+        private double _maximumValue = -1;
+
+        /// <summary>
         /// Property of the minimum parameter value
         /// </summary>
-        public double MinimumValue { get; set; }
+        public double MinimumValue
+        {
+            get => _minimumValue; 
+            set => _minimumValue = value;
+        }
 
         /// <summary>
         /// Property of the maximum parameter value
         /// </summary>
-        public double MaximumValue { get; set; }
+        public double MaximumValue
+        {
+            get => _maximumValue;
+            set => _maximumValue = value;
+        }
 
         /// <summary>
         /// Property of the parameter value
@@ -30,17 +50,23 @@ namespace BottleParameters
             get => _parameterValue;
             set
             {
+                if (MinimumValue == -1 || MaximumValue == -1)
+                {
+                    throw new ArgumentException(
+                        $"Dependent parameter not set");
+                }
+            
                 if (IsNumberInRange(value, MinimumValue, MaximumValue))
                 {
                     _parameterValue = value;
                 }
                 else
                 {
-                    {
-                        throw new ArgumentException(
-                            $"Parameter should be more then {MinimumValue} " +
-                            $"and less then {MaximumValue} ");
-                    }
+                    
+                    throw new ArgumentException(
+                        $"Parameter should be more then {MinimumValue} " +
+                        $"and less then {MaximumValue} ");
+                    
                 }
             }
         }
@@ -73,6 +99,21 @@ namespace BottleParameters
             return value >= min && value <= max;
         }
 
-        
+        public bool Equals(Parameter other)
+        {
+            if (ReferenceEquals(null,other))
+            {
+                return false;
+            }
+
+            if (this.ParameterValue == other.ParameterValue ||
+                this.MaximumValue == other.MaximumValue ||
+                this.MinimumValue == other.MinimumValue)
+            {
+                return true;
+            }
+
+            return this.ParameterValue == other.ParameterValue;
+        }
     }
 }

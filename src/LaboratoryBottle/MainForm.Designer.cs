@@ -96,7 +96,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.17241F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.82759F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel1.Controls.Add(this.wallThicknessLabel, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.widthLabel, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.heightLabel, 2, 0);
@@ -119,7 +119,7 @@
             // 
             this.wallThicknessLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.wallThicknessLabel.AutoSize = true;
-            this.wallThicknessLabel.Location = new System.Drawing.Point(222, 57);
+            this.wallThicknessLabel.Location = new System.Drawing.Point(221, 57);
             this.wallThicknessLabel.Name = "wallThicknessLabel";
             this.wallThicknessLabel.Size = new System.Drawing.Size(53, 13);
             this.wallThicknessLabel.TabIndex = 8;
@@ -129,7 +129,7 @@
             // 
             this.widthLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.widthLabel.AutoSize = true;
-            this.widthLabel.Location = new System.Drawing.Point(222, 31);
+            this.widthLabel.Location = new System.Drawing.Point(221, 31);
             this.widthLabel.Name = "widthLabel";
             this.widthLabel.Size = new System.Drawing.Size(71, 13);
             this.widthLabel.TabIndex = 7;
@@ -139,7 +139,7 @@
             // 
             this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heightLabel.AutoSize = true;
-            this.heightLabel.Location = new System.Drawing.Point(222, 6);
+            this.heightLabel.Location = new System.Drawing.Point(221, 6);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(71, 13);
             this.heightLabel.TabIndex = 5;
@@ -149,7 +149,7 @@
             // 
             this.wallThicknessComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.wallThicknessComboBox.FormattingEnabled = true;
-            this.wallThicknessComboBox.Location = new System.Drawing.Point(124, 53);
+            this.wallThicknessComboBox.Location = new System.Drawing.Point(123, 53);
             this.wallThicknessComboBox.Name = "wallThicknessComboBox";
             this.wallThicknessComboBox.Size = new System.Drawing.Size(92, 21);
             this.wallThicknessComboBox.TabIndex = 7;
@@ -174,7 +174,7 @@
             "250",
             "300",
             "400"});
-            this.widthComboBox.Location = new System.Drawing.Point(124, 28);
+            this.widthComboBox.Location = new System.Drawing.Point(123, 28);
             this.widthComboBox.Name = "widthComboBox";
             this.widthComboBox.Size = new System.Drawing.Size(92, 21);
             this.widthComboBox.TabIndex = 6;
@@ -205,7 +205,7 @@
             this.heightComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.heightComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.heightComboBox.FormattingEnabled = true;
-            this.heightComboBox.Location = new System.Drawing.Point(124, 3);
+            this.heightComboBox.Location = new System.Drawing.Point(123, 3);
             this.heightComboBox.Name = "heightComboBox";
             this.heightComboBox.Size = new System.Drawing.Size(92, 21);
             this.heightComboBox.TabIndex = 5;
@@ -264,7 +264,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.27338F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.72662F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.handleRadiusComboBox, 1, 2);
@@ -312,7 +312,7 @@
             this.handleRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.handleRadiusComboBox.Enabled = false;
             this.handleRadiusComboBox.FormattingEnabled = true;
-            this.handleRadiusComboBox.Location = new System.Drawing.Point(144, 51);
+            this.handleRadiusComboBox.Location = new System.Drawing.Point(143, 51);
             this.handleRadiusComboBox.Name = "handleRadiusComboBox";
             this.handleRadiusComboBox.Size = new System.Drawing.Size(94, 21);
             this.handleRadiusComboBox.TabIndex = 3;
@@ -323,7 +323,7 @@
             this.handleBaseRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.handleBaseRadiusComboBox.Enabled = false;
             this.handleBaseRadiusComboBox.FormattingEnabled = true;
-            this.handleBaseRadiusComboBox.Location = new System.Drawing.Point(144, 27);
+            this.handleBaseRadiusComboBox.Location = new System.Drawing.Point(143, 27);
             this.handleBaseRadiusComboBox.Name = "handleBaseRadiusComboBox";
             this.handleBaseRadiusComboBox.Size = new System.Drawing.Size(94, 21);
             this.handleBaseRadiusComboBox.TabIndex = 2;
@@ -334,7 +334,7 @@
             this.coverRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.coverRadiusComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.coverRadiusComboBox.FormattingEnabled = true;
-            this.coverRadiusComboBox.Location = new System.Drawing.Point(144, 3);
+            this.coverRadiusComboBox.Location = new System.Drawing.Point(143, 3);
             this.coverRadiusComboBox.Name = "coverRadiusComboBox";
             this.coverRadiusComboBox.Size = new System.Drawing.Size(94, 21);
             this.coverRadiusComboBox.TabIndex = 1;
@@ -354,7 +354,7 @@
             // 
             this.handleLengthComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.handleLengthComboBox.FormattingEnabled = true;
-            this.handleLengthComboBox.Location = new System.Drawing.Point(144, 75);
+            this.handleLengthComboBox.Location = new System.Drawing.Point(143, 75);
             this.handleLengthComboBox.Name = "handleLengthComboBox";
             this.handleLengthComboBox.Size = new System.Drawing.Size(94, 21);
             this.handleLengthComboBox.TabIndex = 4;
@@ -364,7 +364,7 @@
             // 
             this.coverRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.coverRadiusLabel.AutoSize = true;
-            this.coverRadiusLabel.Location = new System.Drawing.Point(244, 5);
+            this.coverRadiusLabel.Location = new System.Drawing.Point(243, 5);
             this.coverRadiusLabel.Name = "coverRadiusLabel";
             this.coverRadiusLabel.Size = new System.Drawing.Size(71, 13);
             this.coverRadiusLabel.TabIndex = 9;
@@ -374,7 +374,7 @@
             // 
             this.handleBaseRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.handleBaseRadiusLabel.AutoSize = true;
-            this.handleBaseRadiusLabel.Location = new System.Drawing.Point(244, 29);
+            this.handleBaseRadiusLabel.Location = new System.Drawing.Point(243, 29);
             this.handleBaseRadiusLabel.Name = "handleBaseRadiusLabel";
             this.handleBaseRadiusLabel.Size = new System.Drawing.Size(59, 13);
             this.handleBaseRadiusLabel.TabIndex = 10;
@@ -384,7 +384,7 @@
             // 
             this.handleRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.handleRadiusLabel.AutoSize = true;
-            this.handleRadiusLabel.Location = new System.Drawing.Point(244, 53);
+            this.handleRadiusLabel.Location = new System.Drawing.Point(243, 53);
             this.handleRadiusLabel.Name = "handleRadiusLabel";
             this.handleRadiusLabel.Size = new System.Drawing.Size(59, 13);
             this.handleRadiusLabel.TabIndex = 11;
@@ -394,7 +394,7 @@
             // 
             this.handleLengthLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.handleLengthLabel.AutoSize = true;
-            this.handleLengthLabel.Location = new System.Drawing.Point(244, 79);
+            this.handleLengthLabel.Location = new System.Drawing.Point(243, 79);
             this.handleLengthLabel.Name = "handleLengthLabel";
             this.handleLengthLabel.Size = new System.Drawing.Size(59, 13);
             this.handleLengthLabel.TabIndex = 12;
@@ -404,9 +404,9 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 29);
+            this.label4.Location = new System.Drawing.Point(3, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 13);
+            this.label4.Size = new System.Drawing.Size(128, 24);
             this.label4.TabIndex = 2;
             this.label4.Text = "Радиус онования ручки C";
             // 

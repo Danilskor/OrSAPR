@@ -13,7 +13,6 @@ namespace LaboratoryBottle
     /// </summary>
     public partial class MainForm : Form
     {
-        //TODO:
         /// <summary>
         /// BottleBuilder
         /// </summary>
@@ -244,7 +243,6 @@ namespace LaboratoryBottle
 
         }
 
-        //TODO: XML
         /// <summary>
         ///  Event handler button for set default parameters
         /// </summary>
