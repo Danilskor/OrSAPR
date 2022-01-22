@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace BottleBuilder
 {
+    /// <summary>
+    /// Class defines a point representing a location in (x,y,z) coordinate space
+    /// </summary>
     public class Point3D : Point2D
     {
-        public double Z { get; set; }
+        /// <summary>
+        /// Coordinate Z
+        /// </summary>
+        private double _z;
+
+        /// <summary>
+        /// Get or set coordinate Z
+        /// </summary>
+        public double Z
+        {
+            get => _z;
+            set => _z = value;
+        }
     }
 }

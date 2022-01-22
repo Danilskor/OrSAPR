@@ -19,6 +19,9 @@ namespace BottleBuilder
         /// </summary>
         private Konnector _connector;
 
+        /// <summary>
+        /// Bottle parameters
+        /// </summary>
         private Parameters _parameters;
         
         /// <summary>
@@ -64,8 +67,6 @@ namespace BottleBuilder
             var circleCentre = new Point2D();
             double circleRadius;
             
-
-            //TODO: RSDN
             var angle = Math.Atan((_parameters.CoverRadius.ParameterValue / 2 - _parameters.Width.ParameterValue / 8 * 3 - 
                                    _parameters.WallThickness.ParameterValue) / 
                                   (_parameters.Height.ParameterValue / 4 + _parameters.WallThickness.ParameterValue)) / Math.PI * 180;
@@ -126,6 +127,9 @@ namespace BottleBuilder
             CreateFaceFillet(filletPoint, filletRadius);
         }
 
+        /// <summary>
+        /// Method for building handle of the straight bottle
+        /// </summary>
         private void BuildStraightBottleHandle()
         {
             var sketchPoint = new Point3D();
@@ -220,7 +224,6 @@ namespace BottleBuilder
         {
             Point3D sketchPoint = new Point3D();
             Point3D filletPoint = new Point3D();
-            double filletRadius;
             Point2D circleCentre = new Point2D();
             double circleRadius;
 
@@ -317,11 +320,12 @@ namespace BottleBuilder
             CreateEdgeFillet(filletPoint, filletRadius);
             }
 
+        /// <summary>
+        /// Method for building top of the straight bottle
+        /// </summary>
         private void BuildStraightBottleTop()
         {
             Point3D sketchPoint = new Point3D();
-            Point3D filletPoint = new Point3D();
-            double filletRadius;
             Point2D circleCentre = new Point2D();
             double circleRadius;
 
@@ -340,16 +344,14 @@ namespace BottleBuilder
             var angle = 0;
             PressOutSketchThickness(_sketch, pressHight, pressThickness, true, angle);
         }
-
+        
         /// <summary>
-        /// Method for creating sketchPoint
+        /// 
         /// </summary>
         /// <param name="planeType">Type of the plane</param>
         /// <param name="isFirstSketch"></param>
-        /// <param name="x">Coordinate X pointing to a surface when will be create sketchPoint</param>
-        /// <param name="y">Coordinate Y pointing to a surface when will be create sketchPoint</param>
-        /// <param name="z">Coordinate Z pointing to a surface when will be create sketchPoint</param>
-        /// <returns name=sketchDefinition> Definition of the sketchPoint</returns>
+        /// <param name="point">The point where the sketch will be created</param>
+        /// <returns>Definition of the sketchPoint</returns>
         private ksSketchDefinition CreateSketch(Obj3dType planeType, 
             bool isFirstSketch, Point3D point)
         {
@@ -379,8 +381,7 @@ namespace BottleBuilder
         /// Method for creating circle on sketchPoint
         /// </summary>
         /// <param name="sketchPoint">sketchPoint</param>
-        /// <param name="centreX">Coordinate X of centre circle</param>
-        /// <param name="centreY">Coordinate Y of centre circle</param>
+        /// <param name="centre">Coordinates of centre circle</param>
         /// <param name="radius"> Radius of the circle</param>
         private void CreateCircle(ksSketchDefinition sketchPoint, Point2D centre, double radius)
         {
@@ -474,9 +475,7 @@ namespace BottleBuilder
         /// <summary>
         /// Create сhamfer
         /// </summary>
-        /// <param name="x">Coordinate X pointing to a face to be сhamfered</param>
-        /// <param name="y">Coordinate Y pointing to a face to be сhamfered</param>
-        /// <param name="z">Coordinate Z pointing to a face to be сhamfered</param>
+        /// <param name="point">Coordinates pointing to a face to be сhamfered</param>
         /// <param name="distance1"></param>
         /// <param name="distance2"></param>
         private void CreateChamfer(Point3D point, double distance1, double distance2)
@@ -502,9 +501,7 @@ namespace BottleBuilder
         /// <summary>
         /// Create filletPoint of the face
         /// </summary>
-        /// <param name="x">Coordinate X pointing to a face or surface to be filleted</param>
-        /// <param name="y">Coordinate Y pointing to a face or surface to be filleted</param>
-        /// <param name="z">Coordinate Z pointing to a face or surface to be filleted</param>
+        /// <param name="point">Coordinates pointing to a face or surface to be filleted</param>
         /// <param name="radius">filletPoint radius</param>
         private void CreateFaceFillet(Point3D point, double radius)
         {
@@ -524,9 +521,7 @@ namespace BottleBuilder
         /// <summary>
         /// Create filletPoint of the edge
         /// </summary>
-        /// <param name="x">Coordinate X pointing to a face or surface to be filleted</param>
-        /// <param name="y">Coordinate Y pointing to a face or surface to be filleted</param>
-        /// <param name="z">Coordinate Z pointing to a face or surface to be filleted</param>
+        /// <param name="point">Coordinates pointing to a face or surface to be filleted</param>
         /// <param name="radius">filletPoint radius</param>
         private void CreateEdgeFillet(Point3D point, double radius)
         {

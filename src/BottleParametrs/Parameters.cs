@@ -9,43 +9,139 @@ namespace BottleParameters
     public class Parameters
     {
         /// <summary>
-        /// 
-        /// </summary>
-        private bool _isBottleStraight = false;
-        /// <summary>
-        /// 
+        /// Cover radius of the bottle
         /// </summary>
         private Parameter _coverRadius = new Parameter(minCoverRadius, maxCoverRadius);
 
         /// <summary>
-        /// 
+        /// Handle base radius of the bottle
         /// </summary>
         private Parameter _handleBaseRadius = new Parameter(minHandleBaseRadius, maxHandleBaseRadius);
 
         /// <summary>
-        /// 
+        /// Handle radius of the bottle
         /// </summary>
         private Parameter _handleRadius = new Parameter(minHandleRadius, maxHandleRadius);
 
         /// <summary>
-        /// 
+        /// Handle length of the bottle
         /// </summary>
         private Parameter _handleLength = new Parameter(minHandleLength, maxHandleLength);
 
         /// <summary>
-        /// 
+        /// Height of the bottle
         /// </summary>
         private Parameter _height = new Parameter(minHeight, maxHeight);
 
         /// <summary>
-        /// 
+        /// Width of the bottle
         /// </summary>
         private Parameter _width = new Parameter(minWidth, maxWidth);
 
         /// <summary>
-        /// 
+        /// Wall thickness of the bottle
         /// </summary>
         private Parameter _wallThickness = new Parameter(minWallThickness, maxWallThickness);
+
+        /// <summary>
+        /// Is the bottle straight of the bottle
+        /// </summary>
+        private bool _isBottleStraight = false;
+
+        /// <summary>
+        /// Get or set cover radius
+        /// </summary>
+        public Parameter CoverRadius
+        {
+            get => _coverRadius;
+
+            set
+            {
+                _coverRadius.ParameterValue = value.ParameterValue;
+
+                double handleBaseRadiusMax = value.ParameterValue / 4;
+                _handleBaseRadius.MaximumValue = handleBaseRadiusMax;
+            }
+        }
+
+        /// <summary>
+        /// Get or set handle base radius
+        /// </summary>
+        public Parameter HandleBaseRadius
+        {
+            get => _handleBaseRadius;
+
+            set
+            {
+                _handleBaseRadius = value;
+
+                double handleRadiusMin = value.ParameterValue + 20;
+                double handleRadiusMax = handleRadiusMin + 30;
+
+                _handleRadius.MinimumValue = handleRadiusMin;
+                _handleRadius.MaximumValue = handleRadiusMax;
+            }
+        }
+
+        /// <summary>
+        /// Get or set handle radius
+        /// </summary>
+        public Parameter HandleRadius
+        {
+            get => _handleRadius;
+
+            set => _handleRadius = value;
+        }
+
+        /// <summary>
+        /// Get or set  handle length
+        /// </summary>
+        public Parameter HandleLength
+        {
+            get => _handleLength;
+
+            set => _handleLength = value;
+        }
+
+        /// <summary>
+        /// Get or set height
+        /// </summary>
+        public Parameter Height
+        {
+            get => _height;
+
+            set => _height = value;
+        }
+
+        /// <summary>
+        /// Get or set width
+        /// </summary>
+        public Parameter Width
+        {
+            get => _width;
+
+            set => _width = value;
+        }
+
+        /// <summary>
+        /// Get or set wall thickness
+        /// </summary>
+        public Parameter WallThickness
+        {
+            get => _wallThickness;
+
+            set => _wallThickness = value;
+        }
+
+        /// <summary>
+        /// Get or set is bottle straight
+        /// </summary>
+        public bool IsBottleStraight
+        {
+            get => _isBottleStraight;
+
+            set => _isBottleStraight = value;
+        }
 
         //TODO: Переписать класс, используя инкапсуляцию на список параметров.
         /// <summary>
@@ -117,77 +213,6 @@ namespace BottleParameters
         ///Maximum value of WallThickness
         /// </summary>
         public const double maxWallThickness = 20.0;
-
-        public Parameter CoverRadius
-        {
-            get => _coverRadius;
-
-            set
-            {
-                _coverRadius.ParameterValue = value.ParameterValue;
-
-                double handleBaseRadiusMax = value.ParameterValue / 4;
-                _handleBaseRadius.MaximumValue = handleBaseRadiusMax;
-            }
-        }
-
-        public Parameter HandleBaseRadius
-        {
-            get => _handleBaseRadius;
-
-            set
-            {
-                _handleBaseRadius = value;
-
-                double handleRadiusMin = value.ParameterValue + 20;
-                double handleRadiusMax = handleRadiusMin + 30;
-
-                _handleRadius.MinimumValue = handleRadiusMin;
-                _handleRadius.MaximumValue = handleRadiusMax;
-            }
-        }
-
-        public Parameter HandleRadius
-        {
-            get => _handleRadius;
-
-            set => _handleRadius = value;
-        }
-
-        public Parameter HandleLength
-        {
-            get => _handleLength;
-
-            set => _handleLength = value;
-        }
-
-        public Parameter Height
-        {
-            get => _height;
-
-            set => _height = value;
-        }
-
-        public Parameter Width
-        {
-            get => _width;
-
-            set => _width = value;
-        }
-
-        public Parameter WallThickness
-        {
-            get => _wallThickness;
-
-            set => _wallThickness = value;
-        }
-
-        public bool IsBottleStraight
-        {
-            get => _isBottleStraight;
-
-            set => _isBottleStraight = value;
-        }
 
         /// <summary>
         /// Set default parameters

@@ -8,6 +8,9 @@ using static Validator.Validator;
 
 namespace LaboratoryBottle
 {
+    /// <summary>
+    /// A class that stores and processes the user interface of the plugin
+    /// </summary>
     public partial class MainForm : Form
     {
         //TODO:
@@ -21,13 +24,14 @@ namespace LaboratoryBottle
         /// </summary>
         private Parameters _bottleParameters = new Parameters();
 
-        //TODO:
         /// <summary>
         /// Variable for connecting with Kompas
         /// </summary>
         public Konnector _kompasConnector = new Konnector();
 
-         //TODO: XML
+         /// <summary>
+         /// 
+         /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -92,13 +96,10 @@ namespace LaboratoryBottle
             return valueDigitsNumber;
         }
 
-         //TODO: XML
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         //TODO: Убрать проверки из mainform
+        /// <summary>
+        /// Event handler cover radius combobox
+        /// </summary>
         private void coverRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
             var value = ConvertStringToDouble(coverRadiusComboBox.Text);
@@ -126,7 +127,9 @@ namespace LaboratoryBottle
 
 
         }
-
+        /// <summary>
+        /// Event handler handle base radius combobox
+        /// </summary>
         private void handleBaseRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
             var value = ConvertStringToDouble(handleBaseRadiusComboBox.Text);
@@ -153,6 +156,9 @@ namespace LaboratoryBottle
             }
         }
 
+        /// <summary>
+        /// Event handler handle radius combobox
+        /// </summary>
         private void handleRadiusComboBox_TextUpdate(object sender, EventArgs e)
         {
             ComboboxInputError(handleRadiusComboBox, "handle radius",
@@ -160,6 +166,9 @@ namespace LaboratoryBottle
                 _bottleParameters.HandleRadius.MaximumValue);
         }
 
+        /// <summary>
+        /// Event handler handle length combobox
+        /// </summary>
         private void handleLengthComboBox_TextUpdate(object sender, EventArgs e)
         {
             
@@ -168,6 +177,9 @@ namespace LaboratoryBottle
                 _bottleParameters.HandleLength.MaximumValue);
         }
 
+        /// <summary>
+        /// Event handler height combobox
+        /// </summary>
         private void heightComboBox_TextUpdate(object sender, EventArgs e)
         {
             ComboboxInputError(heightComboBox, "height",
@@ -175,6 +187,9 @@ namespace LaboratoryBottle
                 _bottleParameters.Height.MaximumValue);
         }
 
+        /// <summary>
+        /// Event handler width combobox
+        /// </summary>
         private void widthComboBox_TextUpdate(object sender, EventArgs e)
         {
             ComboboxInputError(widthComboBox, "width",
@@ -182,6 +197,9 @@ namespace LaboratoryBottle
                 _bottleParameters.Width.MaximumValue);
         }
 
+        /// <summary>
+        /// Event handler wall thickness combobox
+        /// </summary>
         private void wallThicknessComboBox_TextUpdate(object sender, EventArgs e)
         {
             ComboboxInputError(wallThicknessComboBox, "wall thickness",
@@ -189,6 +207,9 @@ namespace LaboratoryBottle
                 _bottleParameters.WallThickness.MaximumValue);
         }
 
+        /// <summary>
+        /// Event handler "Build" button
+        /// </summary>
         private void buildButton_Click(object sender, EventArgs e)
         {
             
@@ -223,7 +244,10 @@ namespace LaboratoryBottle
 
         }
 
-         //TODO: XML
+        //TODO: XML
+        /// <summary>
+        ///  Event handler button for set default parameters
+        /// </summary>
         private void defaultParametersButton_Click(object sender, EventArgs e)
         {
             _bottleParameters.SetDefaultParameters();
@@ -256,6 +280,9 @@ namespace LaboratoryBottle
             wallThicknessComboBox.BackColor = Color.White;
         }
 
+        /// <summary>
+        /// Bottle shape selection handler
+        /// </summary>
         private void straightFlaskRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             _bottleParameters.IsBottleStraight = 

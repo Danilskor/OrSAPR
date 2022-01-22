@@ -6,10 +6,37 @@ using System.Threading.Tasks;
 
 namespace BottleBuilder
 {
+    /// <summary>
+    /// Class defines a point representing a location in (x,y) coordinate space
+    /// </summary>
     public class Point2D
     {
-        public double X { get; set; }
+        /// <summary>
+        /// Coordinate X
+        /// </summary>
+        private double _x;
 
-        public double Y { get; set; }
+        /// <summary>
+        /// Coordinate Y
+        /// </summary>
+        private double _y;
+
+        /// <summary>
+        /// Get or set coordinate X
+        /// </summary>
+        public double X
+        {
+            get => _x;
+            set => _x = value;
+        }
+
+        /// <summary>
+        /// Get or set coordinate Y
+        /// </summary>
+        public double Y
+        {
+            get => _y;
+            set => _y = value;
+        }
     }
 }

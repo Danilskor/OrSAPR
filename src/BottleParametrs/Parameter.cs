@@ -38,18 +38,13 @@ namespace BottleParameters
                 {
                     {
                         throw new ArgumentException(
-                            $"{ParameterType} should be more then {MinimumValue} " +
+                            $"Parameter should be more then {MinimumValue} " +
                             $"and less then {MaximumValue} ");
                     }
                 }
             }
         }
         
-        /// <summary>
-        /// Property of the parameter type
-        /// </summary>
-        public ParameterTypeEnum ParameterType { get; set; }
-
         /// <summary>
         /// Constructor of the parameter
         /// </summary>
@@ -61,6 +56,9 @@ namespace BottleParameters
             MaximumValue = maximumValue;
         }
 
+        /// <summary>
+        /// Default constructor of the parameter
+        /// </summary>
         public Parameter() {}
 
         /// <summary>

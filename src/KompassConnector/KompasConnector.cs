@@ -54,7 +54,9 @@ namespace KompasConnector
             
         }
 
-         //TODO: XML
+         /// <summary>
+         /// Create a new document 3D
+         /// </summary>
         public void GetNewPart()
         {
             var doc3D = (ksDocument3D)Kompas.Document3D();
