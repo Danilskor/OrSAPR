@@ -30,53 +30,41 @@ namespace UnitTests
                 var propertyName = expectedProperty.ToString();
                 if (propertyName == "Boolean IsBottleStraight")
                 {
-                    propertyName = propertyName.Replace("Boolean ", "");
-                    var actualPropertyBool = actual.GetType().GetProperty(propertyName);
+                    propertyName = "IsBottleStraight";
+                    var actualValueBool = actual.GetType().GetProperty(propertyName).GetValue(actual);
                     var expectedValueBool = expectedProperty.GetValue(expected);
-                    var actualValueBool = actualPropertyBool.GetValue(actual);
                     Assert.AreEqual(expectedValueBool, actualValueBool);
                 }
                 else
                 {
                     propertyName = propertyName.Replace(
-                        "BottleParameters.Parameter ", "");
-                    var actualProperty = actual.GetType().GetProperty(propertyName);
-                    dynamic expectPropertyObject = expectedProperty.GetValue(expected);
-                    dynamic actualPropertyObject = actualProperty.GetValue(actual);
-                    var expectedValue = expectPropertyObject.ParameterValue;
-                    var actualValue = actualPropertyObject.ParameterValue;
+                        "Double ", "");
+                    var actualValue = actual.GetType().GetProperty(propertyName).GetValue(actual);
+                    var expectedValue = expectedProperty.GetValue(expected);
                     Assert.AreEqual(expectedValue, actualValue);
                 }
             }
         }
 
-        [TestCase(201, 200, 300, 
-            "CoverRadius", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, 
-            "HandleBaseRadius", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, 
-            "HandleRadius", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, 
-            "HandleLength", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, 
-            "Height", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, 
-            "Width", TestName = "Positive parameters get")]
-        [TestCase(201, 200, 300, 
-            "WallThickness", TestName = "Positive parameters get")]
+        [TestCase(201, "CoverRadius", TestName = "Positive parameters get")]
+        [TestCase(201, "HandleBaseRadius", TestName = "Positive parameters get")]
+        [TestCase(201, "HandleRadius", TestName = "Positive parameters get")]
+        [TestCase(201, "HandleLength", TestName = "Positive parameters get")]
+        [TestCase(201, "Height", TestName = "Positive parameters get")]
+        [TestCase(201, "Width", TestName = "Positive parameters get")]
+        [TestCase(201, "WallThickness", TestName = "Positive parameters get")]
         public void Parameters_GetCorrectValue(double testParameterValue, 
-            double minimumValue, double maximumValue, string parameterName)
+             string parameterName)
         {
-            //Act
+            
             var actual = new Parameters();
-            actual = SetParameters(200, 10, 30,
-                10, 300, 200, 7);
-            dynamic actualPropertyObject = actual.GetType().GetProperty(parameterName).GetValue(actual);
-            actualPropertyObject.MinimumValue = minimumValue;
-            actualPropertyObject.MaximumValue = maximumValue;
-            actualPropertyObject.ParameterValue = testParameterValue;
-            //Assert
-            Assert.AreEqual(testParameterValue, actualPropertyObject.ParameterValue);
+            actual.SetDefaultParameters();
+
+            var actualPropertyObject = actual.GetType().GetProperty(parameterName).GetValue(actual);
+
+            actualPropertyObject = testParameterValue;
+            
+            Assert.AreEqual(testParameterValue, actualPropertyObject);
         }
 
         
@@ -84,93 +72,88 @@ namespace UnitTests
         public void Parameters_SetCorrectCoverRadius()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(200, 400);
-            testParameter.ParameterValue = 200;
+            testParameters.SetDefaultParameters();
+            var testValue = 200;
 
-            testParameters.CoverRadius = testParameter;
+            testParameters.CoverRadius = testValue;
 
-            var dependedMaximum = testParameter.ParameterValue / 4;
-
-            Assert.AreEqual(testParameters.CoverRadius, testParameter);
-            Assert.AreEqual(testParameters.HandleBaseRadius.MaximumValue,
-                dependedMaximum);
+            Assert.AreEqual(testParameters.CoverRadius, testValue);
         }
 
         [TestCase(TestName = "Positive Handle Base Radius set")]
         public void Parameters_SetCorrectHandleBaseRadius()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            testParameters.SetDefaultParameters();
 
-            testParameters.HandleBaseRadius = testParameter;
+            var testValue = 50;
+            
+            testParameters.HandleBaseRadius = testValue;
 
-            double handleRadiusMin = testParameter.ParameterValue + 20;
-            double handleRadiusMax = handleRadiusMin + 30;
-
-            Assert.AreEqual(testParameters.HandleBaseRadius, testParameter);
-            Assert.AreEqual(testParameters.HandleRadius.MinimumValue, handleRadiusMin);
-            Assert.AreEqual(testParameters.HandleRadius.MaximumValue, handleRadiusMax);
+            Assert.AreEqual(testParameters.HandleBaseRadius, testValue);
         }
 
         [TestCase(TestName = "Positive Handle Radius set")]
         public void Parameters_SetCorrectHandleRadius()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            testParameters.SetDefaultParameters();
+            var testValue = 30;
+            
+            testParameters.HandleRadius = testValue;
 
-            testParameters.HandleRadius = testParameter;
-
-            Assert.AreEqual(testParameters.HandleRadius, testParameter);
+            Assert.AreEqual(testParameters.HandleRadius, testValue);
         }
 
         [TestCase(TestName = "Positive Handle Length set")]
         public void Parameters_SetCorrectHandleLength()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            testParameters.SetDefaultParameters();
+            var testValue = 20;
+            
 
-            testParameters.HandleLength = testParameter;
+            testParameters.HandleLength = testValue;
 
-            Assert.AreEqual(testParameters.HandleLength, testParameter);
+            Assert.AreEqual(testParameters.HandleLength, testValue);
         }
 
         [TestCase(TestName = "Positive Height set")]
         public void Parameters_SetCorrectHeight()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            testParameters.SetDefaultParameters();
+            var testValue = 350;
+            
 
-            testParameters.Height = testParameter;
+            testParameters.Height = testValue;
 
-            Assert.AreEqual(testParameters.Height, testParameter);
+            Assert.AreEqual(testParameters.Height, testValue);
         }
 
         [TestCase(TestName = "Positive Height set")]
         public void Parameters_SetCorrectWidth()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            testParameters.SetDefaultParameters();
+            var testValue = 300;
+            
 
-            testParameters.Width = testParameter;
+            testParameters.Width = testValue;
 
-            Assert.AreEqual(testParameters.Width, testParameter);
+            Assert.AreEqual(testParameters.Width, testValue);
         }
 
         [TestCase(TestName = "Positive Wall Thickness set")]
         public void Parameters_SetCorrectWallThickness()
         {
             var testParameters = new Parameters();
-            var testParameter = new Parameter(10, 50);
-            testParameter.ParameterValue = 30;
+            testParameters.SetDefaultParameters();
+            var testValue = 20;
 
-            testParameters.WallThickness = testParameter;
+            testParameters.WallThickness = testValue;
 
-            Assert.AreEqual(testParameters.WallThickness, testParameter);
+            Assert.AreEqual(testParameters.WallThickness, testValue);
         }
 
         [TestCase(TestName = "Positive Is Bottle Straight set")]
@@ -181,7 +164,6 @@ namespace UnitTests
 
             testParameters.IsBottleStraight = testParameter;
 
-            Assert.True(testParameters.IsBottleStraight == testParameter);
             Assert.AreEqual(testParameters.IsBottleStraight, testParameter);
         }
 
@@ -190,16 +172,13 @@ namespace UnitTests
             double height, double width, double wallThickness)
         {
             var parameters = new Parameters();
-            parameters.CoverRadius.ParameterValue = coverRadius;
-            parameters.HandleBaseRadius.MaximumValue = 10;
-            parameters.HandleBaseRadius.ParameterValue = handleBaseRadius;
-            parameters.HandleRadius.MinimumValue = 30;
-            parameters.HandleRadius.MaximumValue = 60;
-            parameters.HandleRadius.ParameterValue = handleRadius;
-            parameters.HandleLength.ParameterValue = handleLength;
-            parameters.Height.ParameterValue = height;
-            parameters.Width.ParameterValue = width;
-            parameters.WallThickness.ParameterValue = wallThickness;
+            parameters.CoverRadius = coverRadius;
+            parameters.HandleBaseRadius = handleBaseRadius;
+            parameters.HandleRadius = handleRadius;
+            parameters.HandleLength = handleLength;
+            parameters.Height = height;
+            parameters.Width = width;
+            parameters.WallThickness = wallThickness;
             parameters.IsBottleStraight = false;
             return parameters;
         }

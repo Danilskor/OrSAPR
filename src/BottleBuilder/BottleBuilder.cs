@@ -67,63 +67,63 @@ namespace BottleBuilder
             var circleCentre = new Point2D();
             double circleRadius;
             
-            var angle = Math.Atan((_parameters.CoverRadius.ParameterValue / 2 - _parameters.Width.ParameterValue / 8 * 3 - 
-                                   _parameters.WallThickness.ParameterValue) / 
-                                  (_parameters.Height.ParameterValue / 4 + _parameters.WallThickness.ParameterValue)) / Math.PI * 180;
+            var angle = Math.Atan((_parameters.CoverRadius / 2 - _parameters.Width / 8 * 3 - 
+                                   _parameters.WallThickness) / 
+                                  (_parameters.Height / 4 + _parameters.WallThickness)) / Math.PI * 180;
 
-            var pressThickness = _parameters.Height.ParameterValue / 4 + _parameters.WallThickness.ParameterValue;
+            var pressThickness = _parameters.Height / 4 + _parameters.WallThickness;
             PressOutSketch(_sketch, pressThickness, true, angle);
 
-            chamferPoint.X = _parameters.CoverRadius.ParameterValue / 2 - _parameters.WallThickness.ParameterValue;
+            chamferPoint.X = _parameters.CoverRadius / 2 - _parameters.WallThickness;
             chamferPoint.Y = 0;
-            chamferPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue * 2;
-            CreateChamfer(chamferPoint,  _parameters.WallThickness.ParameterValue, _parameters.WallThickness.ParameterValue);
+            chamferPoint.Z = _parameters.Height + _parameters.WallThickness * 2;
+            CreateChamfer(chamferPoint,  _parameters.WallThickness, _parameters.WallThickness);
 
             //TODO: Переписать все использования этих полей. Поля удалить. Создать класс/структуру 3D точки.
             sketchPoint.X = 0;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue * 2;
+            sketchPoint.Z = _parameters.Height + _parameters.WallThickness * 2;
             _sketch = CreateSketch(Obj3dType.o3d_sketch, false, sketchPoint);
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.HandleBaseRadius.ParameterValue / 2;
+            circleRadius = _parameters.HandleBaseRadius / 2;
             CreateCircle(_sketch, circleCentre, circleRadius);
             _sketch.EndEdit();
 
-            pressThickness = _parameters.HandleLength.ParameterValue;
+            pressThickness = _parameters.HandleLength;
             PressOutSketch(_sketch, pressThickness, true, 0);
 
             sketchPoint.X = 0;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue + 
-                            _parameters.WallThickness.ParameterValue * 2 + 
-                            _parameters.HandleLength.ParameterValue;
+            sketchPoint.Z = _parameters.Height + 
+                            _parameters.WallThickness * 2 + 
+                            _parameters.HandleLength;
             _sketch = CreateSketch(Obj3dType.o3d_sketch, false, sketchPoint);
 
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.HandleRadius.ParameterValue / 2;
+            circleRadius = _parameters.HandleRadius / 2;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
-            pressThickness = _parameters.HandleRadius.ParameterValue;
+            pressThickness = _parameters.HandleRadius;
             PressOutSketch(_sketch, pressThickness, true, 0);
 
-            filletPoint.X = _parameters.HandleRadius.ParameterValue / 2;
+            filletPoint.X = _parameters.HandleRadius / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue * 2 + 
-                       _parameters.HandleLength.ParameterValue + _parameters.HandleRadius.ParameterValue / 2;
+            filletPoint.Z = _parameters.Height + _parameters.WallThickness * 2 + 
+                       _parameters.HandleLength + _parameters.HandleRadius / 2;
 
-            filletRadius = _parameters.HandleRadius.ParameterValue / 2;
+            filletRadius = _parameters.HandleRadius / 2;
             CreateFaceFillet(filletPoint, filletRadius);
 
-            filletPoint.X = _parameters.HandleBaseRadius.ParameterValue / 2;
+            filletPoint.X = _parameters.HandleBaseRadius / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue + 
-                            _parameters.WallThickness.ParameterValue * 2 + 
-                            _parameters.HandleLength.ParameterValue / 2;
-            filletRadius = _parameters.HandleBaseRadius.ParameterValue / 4;
+            filletPoint.Z = _parameters.Height + 
+                            _parameters.WallThickness * 2 + 
+                            _parameters.HandleLength / 2;
+            filletRadius = _parameters.HandleBaseRadius / 4;
             CreateFaceFillet(filletPoint, filletRadius);
         }
 
@@ -139,81 +139,81 @@ namespace BottleBuilder
             var circleCentre = new Point2D();
             double circleRadius;
 
-            var pressThickness = _parameters.Height.ParameterValue / 4 + 
-                                 _parameters.WallThickness.ParameterValue * 2;
+            var pressThickness = _parameters.Height / 4 + 
+                                 _parameters.WallThickness * 2;
             var angle = 0;
             PressOutSketch(_sketch, pressThickness, true, angle);
 
-            sketchPoint.X = _parameters.Width.ParameterValue / 2 - _parameters.WallThickness.ParameterValue / 2;
+            sketchPoint.X = _parameters.Width / 2 - _parameters.WallThickness / 2;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue;
+            sketchPoint.Z = _parameters.Height;
             _sketch = CreateSketch(Obj3dType.o3d_planeXOY, false, sketchPoint);
 
-            chamferPoint.X = _parameters.Width.ParameterValue / 2;
+            chamferPoint.X = _parameters.Width / 2;
             chamferPoint.Y = 0;
-            chamferPoint.Z = _parameters.Height.ParameterValue;
-            CreateChamfer(chamferPoint, _parameters.WallThickness.ParameterValue, _parameters.WallThickness.ParameterValue);
+            chamferPoint.Z = _parameters.Height;
+            CreateChamfer(chamferPoint, _parameters.WallThickness, _parameters.WallThickness);
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.Width.ParameterValue / 2;
+            circleRadius = _parameters.Width / 2;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
-            pressThickness = _parameters.WallThickness.ParameterValue * 2;
+            pressThickness = _parameters.WallThickness * 2;
             angle = 0;
             PressOutSketch(_sketch, pressThickness, true, angle);
 
-            filletPoint.X = _parameters.Width.ParameterValue / 2;
+            filletPoint.X = _parameters.Width / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue +
-                            _parameters.WallThickness.ParameterValue;
-            filletRadius = _parameters.WallThickness.ParameterValue;
+            filletPoint.Z = _parameters.Height +
+                            _parameters.WallThickness;
+            filletRadius = _parameters.WallThickness;
             CreateFaceFillet(filletPoint, filletRadius);
 
             sketchPoint.X = 0;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue * 2;
+            sketchPoint.Z = _parameters.Height + _parameters.WallThickness * 2;
             _sketch = CreateSketch(Obj3dType.o3d_sketch, false, sketchPoint);
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.HandleBaseRadius.ParameterValue / 2;
+            circleRadius = _parameters.HandleBaseRadius / 2;
             CreateCircle(_sketch, circleCentre, circleRadius);
             _sketch.EndEdit();
 
-            pressThickness = _parameters.HandleLength.ParameterValue;
+            pressThickness = _parameters.HandleLength;
             PressOutSketch(_sketch, pressThickness, true, 0);
 
             sketchPoint.X = 0;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue +
-                            _parameters.WallThickness.ParameterValue * 2 +
-                            _parameters.HandleLength.ParameterValue;
+            sketchPoint.Z = _parameters.Height +
+                            _parameters.WallThickness * 2 +
+                            _parameters.HandleLength;
             _sketch = CreateSketch(Obj3dType.o3d_sketch, false, sketchPoint);
 
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.HandleRadius.ParameterValue / 2;
+            circleRadius = _parameters.HandleRadius / 2;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
-            pressThickness = _parameters.HandleRadius.ParameterValue;
+            pressThickness = _parameters.HandleRadius;
             PressOutSketch(_sketch, pressThickness, true, 0);
 
-            filletPoint.X = _parameters.HandleRadius.ParameterValue / 2;
+            filletPoint.X = _parameters.HandleRadius / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue * 2 +
-                       _parameters.HandleLength.ParameterValue + _parameters.HandleRadius.ParameterValue / 2;
+            filletPoint.Z = _parameters.Height + _parameters.WallThickness * 2 +
+                       _parameters.HandleLength + _parameters.HandleRadius / 2;
 
-            filletRadius = _parameters.HandleRadius.ParameterValue / 2;
+            filletRadius = _parameters.HandleRadius / 2;
             CreateFaceFillet(filletPoint, filletRadius);
 
-            filletPoint.X = _parameters.HandleBaseRadius.ParameterValue / 2;
+            filletPoint.X = _parameters.HandleBaseRadius / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue +
-                            _parameters.WallThickness.ParameterValue * 2 +
-                            _parameters.HandleLength.ParameterValue / 2;
-            filletRadius = _parameters.HandleBaseRadius.ParameterValue / 4;
+            filletPoint.Z = _parameters.Height +
+                            _parameters.WallThickness * 2 +
+                            _parameters.HandleLength / 2;
+            filletRadius = _parameters.HandleBaseRadius / 4;
             CreateFaceFillet(filletPoint, filletRadius);
         }
 
@@ -234,24 +234,24 @@ namespace BottleBuilder
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.Width.ParameterValue / 2 - _parameters.WallThickness.ParameterValue;
+            circleRadius = _parameters.Width / 2 - _parameters.WallThickness;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
-            var pressThickness = _parameters.WallThickness.ParameterValue;
-            double pressHeight = _parameters.Height.ParameterValue / 4 * 3;
+            var pressThickness = _parameters.WallThickness;
+            double pressHeight = _parameters.Height / 4 * 3;
             PressOutSketchThickness(_sketch, pressHeight, pressThickness, true, 0);
 
-            pressThickness = _parameters.WallThickness.ParameterValue;
+            pressThickness = _parameters.WallThickness;
             PressOutSketch(_sketch, pressThickness, false, 0);
 
-            filletPoint.X = _parameters.Width.ParameterValue / 2;
+            filletPoint.X = _parameters.Width / 2;
             filletPoint.Y = 0;
             filletPoint.Z = 0;
-            CreateEdgeFillet(filletPoint, _parameters.WallThickness.ParameterValue);
+            CreateEdgeFillet(filletPoint, _parameters.WallThickness);
 
-            sketchPoint.X = _parameters.Width.ParameterValue / 2 - 2;
+            sketchPoint.X = _parameters.Width / 2 - 2;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue / 4 * 3;
+            sketchPoint.Z = _parameters.Height / 4 * 3;
             _sketch = CreateSketch(Obj3dType.o3d_sketch, false, sketchPoint);
         }
 
@@ -270,53 +270,53 @@ namespace BottleBuilder
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.Width.ParameterValue / 8 * 3;
+            circleRadius = _parameters.Width / 8 * 3;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.Width.ParameterValue / 2;
+            circleRadius = _parameters.Width / 2;
             CreateCircle(_sketch, circleCentre, circleRadius);
             _sketch.EndEdit();
 
-            var pressThickness = _parameters.WallThickness.ParameterValue;
+            var pressThickness = _parameters.WallThickness;
             PressOutSketch(_sketch, pressThickness, false, 0);
 
-            filletPoint.X = _parameters.Width.ParameterValue / 2;
+            filletPoint.X = _parameters.Width / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue / 4 * 3 + _parameters.WallThickness.ParameterValue;
-            CreateEdgeFillet(filletPoint, _parameters.WallThickness.ParameterValue);
+            filletPoint.Z = _parameters.Height / 4 * 3 + _parameters.WallThickness;
+            CreateEdgeFillet(filletPoint, _parameters.WallThickness);
 
-            sketchPoint.X = _parameters.Width.ParameterValue / 2 - _parameters.WallThickness.ParameterValue - 2;
+            sketchPoint.X = _parameters.Width / 2 - _parameters.WallThickness - 2;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue / 4 * 3 + _parameters.WallThickness.ParameterValue;
+            sketchPoint.Z = _parameters.Height / 4 * 3 + _parameters.WallThickness;
             _sketch = CreateSketch(Obj3dType.o3d_sketch, false, sketchPoint);
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.Width.ParameterValue / 8 * 3;
+            circleRadius = _parameters.Width / 8 * 3;
             CreateCircle(_sketch, circleCentre, circleRadius);
             _sketch.EndEdit();
 
-            double angle = (Math.Atan(((_parameters.CoverRadius.ParameterValue / 2 -
-                                        _parameters.Width.ParameterValue / 8 * 3 -
-                                        _parameters.WallThickness.ParameterValue) /
-                                       (_parameters.Height.ParameterValue / 4))) / Math.PI * 180);
+            double angle = (Math.Atan(((_parameters.CoverRadius / 2 -
+                                        _parameters.Width / 8 * 3 -
+                                        _parameters.WallThickness) /
+                                       (_parameters.Height / 4))) / Math.PI * 180);
 
-            var pressHeight = _parameters.Height.ParameterValue / 4;
-            pressThickness = _parameters.WallThickness.ParameterValue;
+            var pressHeight = _parameters.Height / 4;
+            pressThickness = _parameters.WallThickness;
             PressOutSketchThickness(_sketch, pressHeight, pressThickness, true, angle);
 
-            filletPoint.X = _parameters.CoverRadius.ParameterValue / 2;
+            filletPoint.X = _parameters.CoverRadius / 2;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue;
-            filletRadius = _parameters.WallThickness.ParameterValue / 2;
+            filletPoint.Z = _parameters.Height + _parameters.WallThickness;
+            filletRadius = _parameters.WallThickness / 2;
             CreateEdgeFillet(filletPoint, filletRadius);
 
-            filletPoint.X = _parameters.CoverRadius.ParameterValue / 2 - _parameters.WallThickness.ParameterValue;
+            filletPoint.X = _parameters.CoverRadius / 2 - _parameters.WallThickness;
             filletPoint.Y = 0;
-            filletPoint.Z = _parameters.Height.ParameterValue + _parameters.WallThickness.ParameterValue;
-            filletRadius = _parameters.WallThickness.ParameterValue / 2;
+            filletPoint.Z = _parameters.Height + _parameters.WallThickness;
+            filletRadius = _parameters.WallThickness / 2;
             CreateEdgeFillet(filletPoint, filletRadius);
             }
 
@@ -329,18 +329,18 @@ namespace BottleBuilder
             Point2D circleCentre = new Point2D();
             double circleRadius;
 
-            sketchPoint.X = _parameters.Width.ParameterValue / 2 - _parameters.WallThickness.ParameterValue / 2;
+            sketchPoint.X = _parameters.Width / 2 - _parameters.WallThickness / 2;
             sketchPoint.Y = 0;
-            sketchPoint.Z = _parameters.Height.ParameterValue / 4 * 3;
+            sketchPoint.Z = _parameters.Height / 4 * 3;
             _sketch = CreateSketch(Obj3dType.o3d_planeXOY, false, sketchPoint);
 
             circleCentre.X = 0;
             circleCentre.Y = 0;
-            circleRadius = _parameters.Width.ParameterValue / 2 - _parameters.WallThickness.ParameterValue;
+            circleRadius = _parameters.Width / 2 - _parameters.WallThickness;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
-            var pressHight = _parameters.Height.ParameterValue / 4 * 1;
-            var pressThickness = _parameters.WallThickness.ParameterValue;
+            var pressHight = _parameters.Height / 4 * 1;
+            var pressThickness = _parameters.WallThickness;
             var angle = 0;
             PressOutSketchThickness(_sketch, pressHight, pressThickness, true, angle);
         }
