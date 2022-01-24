@@ -40,8 +40,7 @@ namespace Validator
                 throw new ArgumentException($"String {field} should contain only numbers");
             }
         }
-
-         //TODO: XML
+        
         /// <summary>
         /// Сhecks if the double value is included in the interval
         /// </summary>

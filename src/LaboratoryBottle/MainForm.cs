@@ -36,6 +36,7 @@ namespace LaboratoryBottle
             InitializeComponent();
         }
 
+         //TODO: Несоответствие XML-комментария сигнатуре метода 
          /// <summary>
          /// if an incorrect input was made in the combobox,
          /// the input field is colored red, and the build button becomes inactive
@@ -112,6 +113,7 @@ namespace LaboratoryBottle
             return numberResult;
         }
 
+        //TODO:
         /// <summary>
         /// Сalculates the number of digits in the integer part of a number
         /// </summary>
@@ -130,6 +132,7 @@ namespace LaboratoryBottle
             return valueDigitsNumber;
         }
 
+        //TODO: RSDN
         //TODO: Убрать проверки из mainform
         /// <summary>
         /// Event handler cover radius combobox
@@ -152,10 +155,10 @@ namespace LaboratoryBottle
             {
                 handleBaseRadiusComboBox.Enabled = false;
             }
-
-
         }
 
+        //TODO: RSDN
+        //TODO: Убрать проверки из mainform
         /// <summary>
         /// Event handler handle base radius combobox
         /// </summary>
@@ -178,6 +181,8 @@ namespace LaboratoryBottle
             }
         }
 
+        //TODO: RSDN
+        //TODO: дубль
         /// <summary>
         /// Event handler handle radius combobox
         /// </summary>
@@ -188,6 +193,7 @@ namespace LaboratoryBottle
 
         }
 
+        //TODO: дубль
         /// <summary>
         /// Event handler handle length combobox
         /// </summary>
@@ -198,6 +204,7 @@ namespace LaboratoryBottle
                ParameterTypeEnum.HandleLength);
         }
 
+        //TODO: дубль
         /// <summary>
         /// Event handler height combobox
         /// </summary>
@@ -207,6 +214,7 @@ namespace LaboratoryBottle
                 ParameterTypeEnum.Height);
         }
 
+        //TODO: дубль
         /// <summary>
         /// Event handler width combobox
         /// </summary>
@@ -216,6 +224,7 @@ namespace LaboratoryBottle
                ParameterTypeEnum.Width);
         }
 
+        //TODO: дубль
         /// <summary>
         /// Event handler wall thickness combobox
         /// </summary>
@@ -225,6 +234,7 @@ namespace LaboratoryBottle
                 ParameterTypeEnum.WallThickness);
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Event handler "Build" button
         /// </summary>
@@ -263,6 +273,7 @@ namespace LaboratoryBottle
 
         }
 
+
         /// <summary>
         ///  Event handler button for set default parameters
         /// </summary>
@@ -298,6 +309,7 @@ namespace LaboratoryBottle
             wallThicknessComboBox.BackColor = Color.White;
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Bottle shape selection handler
         /// </summary>

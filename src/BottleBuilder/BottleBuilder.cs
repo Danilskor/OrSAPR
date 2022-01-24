@@ -60,6 +60,7 @@ namespace BottleBuilder
         /// </summary>
         private void BuildHandle()
         {
+            //TODO: RSDN
             var sketchPoint = new Point3D();
             var filletPoint = new Point3D();
             var chamferPoint = new Point3D();
@@ -67,6 +68,7 @@ namespace BottleBuilder
             var circleCentre = new Point2D();
             double circleRadius;
             
+            //TODO: RSDN
             var angle = Math.Atan((_parameters.CoverRadius / 2 - _parameters.Width / 8 * 3 - 
                                    _parameters.WallThickness) / 
                                   (_parameters.Height / 4 + _parameters.WallThickness)) / Math.PI * 180;
@@ -74,12 +76,12 @@ namespace BottleBuilder
             var pressThickness = _parameters.Height / 4 + _parameters.WallThickness;
             PressOutSketch(_sketch, pressThickness, true, angle);
 
+            //TODO: RSDN
             chamferPoint.X = _parameters.CoverRadius / 2 - _parameters.WallThickness;
             chamferPoint.Y = 0;
             chamferPoint.Z = _parameters.Height + _parameters.WallThickness * 2;
             CreateChamfer(chamferPoint,  _parameters.WallThickness, _parameters.WallThickness);
-
-            //TODO: Переписать все использования этих полей. Поля удалить. Создать класс/структуру 3D точки.
+            
             sketchPoint.X = 0;
             sketchPoint.Y = 0;
             sketchPoint.Z = _parameters.Height + _parameters.WallThickness * 2;
@@ -132,6 +134,7 @@ namespace BottleBuilder
         /// </summary>
         private void BuildStraightBottleHandle()
         {
+            //TODO: RSDN
             var sketchPoint = new Point3D();
             var filletPoint = new Point3D();
             var chamferPoint = new Point3D();
@@ -222,19 +225,21 @@ namespace BottleBuilder
         /// </summary>
         private void BuildBottleBase()
         {
-            Point3D sketchPoint = new Point3D();
-            Point3D filletPoint = new Point3D();
-            Point2D circleCentre = new Point2D();
-            double circleRadius;
+            var sketchPoint = new Point3D
+            {
+                X = 0,
+                Y = 0,
+                Z = 0
+            };
 
-            sketchPoint.X = 0;
-            sketchPoint.Y = 0;
-            sketchPoint.Z = 0;
             _sketch = CreateSketch(Obj3dType.o3d_planeXOY, true, sketchPoint);
 
-            circleCentre.X = 0;
-            circleCentre.Y = 0;
-            circleRadius = _parameters.Width / 2 - _parameters.WallThickness;
+            var circleCentre = new Point2D
+            {
+                X = 0,
+                Y = 0
+            };
+            double circleRadius = _parameters.Width / 2 - _parameters.WallThickness;
             CreateCircle(_sketch, circleCentre, circleRadius);
 
             var pressThickness = _parameters.WallThickness;
@@ -244,9 +249,12 @@ namespace BottleBuilder
             pressThickness = _parameters.WallThickness;
             PressOutSketch(_sketch, pressThickness, false, 0);
 
-            filletPoint.X = _parameters.Width / 2;
-            filletPoint.Y = 0;
-            filletPoint.Z = 0;
+            var filletPoint = new Point3D
+            {
+                X = _parameters.Width / 2,
+                Y = 0,
+                Z = 0
+            };
             CreateEdgeFillet(filletPoint, _parameters.WallThickness);
 
             sketchPoint.X = _parameters.Width / 2 - 2;
@@ -262,6 +270,7 @@ namespace BottleBuilder
         /// </summary>
         private void BuildBottleTop()
         {
+            //TODO: RSDN
             Point3D sketchPoint = new Point3D();
             Point3D filletPoint = new Point3D();
             double filletRadius;
@@ -325,6 +334,7 @@ namespace BottleBuilder
         /// </summary>
         private void BuildStraightBottleTop()
         {
+            //TODO: RSDN
             Point3D sketchPoint = new Point3D();
             Point2D circleCentre = new Point2D();
             double circleRadius;
@@ -537,7 +547,5 @@ namespace BottleBuilder
 
             filletEntity.Create();
         }
-
-
     }
 }

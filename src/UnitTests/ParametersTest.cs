@@ -10,8 +10,6 @@ namespace UnitTests
     [TestFixture]
     public class ParametersTest
     {
-        //TODO:
-
         [TestCase(TestName = "Positive default parameters set")]
         public void Parameters_SetDefaultValue()
         {
@@ -21,6 +19,7 @@ namespace UnitTests
 
             //Act
             var actual = new Parameters();
+            //TODO: конструктор?
             actual = SetParameters(200, 10, 30,
                 10, 300, 200, 7);
 
@@ -28,6 +27,7 @@ namespace UnitTests
             foreach (PropertyInfo expectedProperty in expected.GetType().GetProperties())
             {
                 var propertyName = expectedProperty.ToString();
+                //TODO: nameof()?
                 if (propertyName == "Boolean IsBottleStraight")
                 {
                     propertyName = "IsBottleStraight";
@@ -67,7 +67,7 @@ namespace UnitTests
             Assert.AreEqual(testParameterValue, actualPropertyObject);
         }
 
-        
+        //TODO: дубль
         [TestCase(TestName = "Positive cover radius set")]
         public void Parameters_SetCorrectCoverRadius()
         {
@@ -171,15 +171,17 @@ namespace UnitTests
             double handleRadius, double handleLength,
             double height, double width, double wallThickness)
         {
-            var parameters = new Parameters();
-            parameters.CoverRadius = coverRadius;
-            parameters.HandleBaseRadius = handleBaseRadius;
-            parameters.HandleRadius = handleRadius;
-            parameters.HandleLength = handleLength;
-            parameters.Height = height;
-            parameters.Width = width;
-            parameters.WallThickness = wallThickness;
-            parameters.IsBottleStraight = false;
+            var parameters = new Parameters
+            {
+                CoverRadius = coverRadius,
+                HandleBaseRadius = handleBaseRadius,
+                HandleRadius = handleRadius,
+                HandleLength = handleLength,
+                Height = height,
+                Width = width,
+                WallThickness = wallThickness,
+                IsBottleStraight = false
+            };
             return parameters;
         }
     }

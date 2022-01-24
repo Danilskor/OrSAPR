@@ -7,6 +7,7 @@ namespace BottleParameters
     /// </summary>
     public class Parameters
     {
+        //TODO: RSDN
         /// <summary>
         /// Cover radius of the bottle
         /// </summary>
@@ -141,8 +142,7 @@ namespace BottleParameters
 
             set => _isBottleStraight = value;
         }
-
-        //TODO: Переписать класс, используя инкапсуляцию на список параметров.
+        
         /// <summary>
         ///Minimum value of Cover Radius
         /// </summary>
@@ -203,6 +203,7 @@ namespace BottleParameters
         /// </summary>
         public const double NOT_SET_MAX_OR_MIN_VALUE = -1;
 
+        //TODO: Несоответствие XML-комментария сигнатуре метода 
         /// <summary>
         /// Set default parameters
         /// </summary>
