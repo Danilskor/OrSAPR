@@ -346,7 +346,7 @@ namespace BottleBuilder
         }
         
         /// <summary>
-        /// 
+        /// Method for creating sketch
         /// </summary>
         /// <param name="planeType">Type of the plane</param>
         /// <param name="isFirstSketch"></param>

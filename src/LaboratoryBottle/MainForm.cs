@@ -29,7 +29,7 @@ namespace LaboratoryBottle
         public Konnector _kompasConnector = new Konnector();
 
          /// <summary>
-         /// 
+         /// Main form constructor
          /// </summary>
         public MainForm()
         {
@@ -143,12 +143,7 @@ namespace LaboratoryBottle
 
             try
             {
-                //var newParameter = _bottleParameters.CoverRadius;
-                //newParameter.ParameterValue = value;
                 _bottleParameters.CoverRadius = value;
-
-                /*AssertNumberOnRange(value, _bottleParameters.CoverRadius.MinimumValue,
-                    _bottleParameters.CoverRadius.MaximumValue, "cover radius");*/
                 handleBaseRadiusComboBox.Enabled = true;
                 handleBaseRadiusLabel.Text = $"(10-" +
                                              $"{value / 4}) мм";
@@ -173,12 +168,7 @@ namespace LaboratoryBottle
 
             try
             {
-                /*var newParameter = _bottleParameters.HandleBaseRadius;
-                newParameter.ParameterValue = value;*/
                 _bottleParameters.HandleBaseRadius = value;
-
-                /*AssertNumberOnRange(value, _bottleParameters.HandleBaseRadius.MinimumValue,
-                    _bottleParameters.HandleBaseRadius.MaximumValue, "handle base radius");*/
                 handleRadiusLabel.Text = $"({value + 20}-{value + 50 }) мм";
                 handleRadiusComboBox.Enabled = true;
             }
