@@ -18,58 +18,37 @@ namespace UnitTests
             expected.SetDefaultParameters();
 
             //Act
-            var actual = new Parameters
-            {
-                CoverRadius = 200,
-                HandleBaseRadius = 10,
-                HandleLength = 10,
-                HandleRadius = 30,
-                Height = 300,
-                Width = 200,
-                WallThickness = 7
-            };
+            var actual = new Parameters();
+            actual = SetDefaultValues(actual);
             //TODO: конструктор?
 
             //Assert
             foreach (PropertyInfo expectedProperty in expected.GetType().GetProperties())
             {
-                var propertyName = expectedProperty.ToString();
+                var propertyName = expectedProperty.Name;
                 //TODO: nameof()?
-                if (propertyName == "Boolean IsBottleStraight")
-                {
-                    propertyName = "IsBottleStraight";
-                    var actualValueBool = actual.GetType().GetProperty(propertyName).GetValue(actual);
-                    var expectedValueBool = expectedProperty.GetValue(expected);
-                    Assert.AreEqual(expectedValueBool, actualValueBool);
-                }
-                else
-                {
-                    propertyName = propertyName.Replace(
-                        "Double ", "");
-                    var actualValue = actual.GetType().GetProperty(propertyName).GetValue(actual);
-                    var expectedValue = expectedProperty.GetValue(expected);
-                    Assert.AreEqual(expectedValue, actualValue);
-                }
+                var actualValue = actual.GetType().GetProperty(propertyName).GetValue(actual);
+                var expectedValue = expectedProperty.GetValue(expected);
+                Assert.AreEqual(expectedValue, actualValue);
             }
         }
 
-        [TestCase(201, "CoverRadius", TestName = "Positive parameters get")]
-        [TestCase(201, "HandleBaseRadius", TestName = "Positive parameters get")]
-        [TestCase(201, "HandleRadius", TestName = "Positive parameters get")]
-        [TestCase(201, "HandleLength", TestName = "Positive parameters get")]
-        [TestCase(201, "Height", TestName = "Positive parameters get")]
-        [TestCase(201, "Width", TestName = "Positive parameters get")]
-        [TestCase(201, "WallThickness", TestName = "Positive parameters get")]
+        [TestCase(201, ParameterType.CoverRadius, TestName = "Positive parameters get")]
+        [TestCase(31, ParameterType.HandleBaseRadius, TestName = "Positive parameters get")]
+        [TestCase(31, ParameterType.HandleRadius, TestName = "Positive parameters get")]
+        [TestCase(21, ParameterType.HandleLength, TestName = "Positive parameters get")]
+        [TestCase(351, ParameterType.Height, TestName = "Positive parameters get")]
+        [TestCase(201, ParameterType.Width, TestName = "Positive parameters get")]
+        [TestCase(10, ParameterType.WallThickness, TestName = "Positive parameters get")]
         public void Parameters_GetCorrectValue(double testParameterValue, 
-             string parameterName)
+             ParameterType parameterType)
         {
             
             var actual = new Parameters();
-            actual.SetDefaultParameters();
+            actual = SetDefaultValues(actual);
 
-            var actualPropertyObject = actual.GetType().GetProperty(parameterName).GetValue(actual);
-
-            actualPropertyObject = testParameterValue;
+            actual.SetParameterValueByType(testParameterValue, parameterType);
+            var actualPropertyObject = actual.GetType().GetProperty(parameterType.ToString()).GetValue(actual);
             
             Assert.AreEqual(testParameterValue, actualPropertyObject);
         }
@@ -85,16 +64,9 @@ namespace UnitTests
         [TestCase(true, ParameterType.IsBottleStraight, TestName = "Positive Is Bottle Straight set")]
         public void Parameters_SetCorrectParameters(dynamic value, ParameterType parameterType)
         {
-            var testParameters = new Parameters
-            {
-                CoverRadius = 200,
-                HandleBaseRadius = 10,
-                HandleLength = 10,
-                HandleRadius = 30,
-                Height = 300,
-                Width = 200,
-                WallThickness = 7
-            };
+            var testParameters = new Parameters();
+            testParameters = SetDefaultValues(testParameters);
+
             var testValue = value;
 
             testParameters.SetParameterValueByType(testValue, parameterType);
@@ -237,6 +209,24 @@ namespace UnitTests
                 }
             }
             Assert.AreEqual(expectedMaximumValue, actualMaximumValue);
+        }
+
+        /// <summary>
+        /// Set default parameters values
+        /// </summary>
+        /// <param name="parameters">Parameters</param>
+        private Parameters SetDefaultValues(Parameters parameters)
+        {
+            return parameters = new Parameters
+            {
+                CoverRadius = 200,
+                HandleBaseRadius = 10,
+                HandleLength = 10,
+                HandleRadius = 30,
+                Height = 300,
+                Width = 200,
+                WallThickness = 7
+            };
         }
     }
 }

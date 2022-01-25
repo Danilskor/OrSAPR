@@ -30,9 +30,17 @@ namespace LaboratoryBottle
         /// <summary>
         /// Variable for connecting with Kompas
         /// </summary>
-        public Konnector _kompasConnector = new Konnector();
+        private Konnector _kompasConnector = new Konnector();
 
+        /// <summary>
+        /// Dictionary of Suggested Pairs (ComboBoxes, parameter name)
+        /// </summary>
         private Dictionary<ComboBox, ParameterType> _comboboxDictionary;
+
+        /*/// <summary>
+        /// An array indicating that the values ​​in all comboBoxes are correct
+        /// </summary>
+        private Dictionary<ParameterType, > _allTextBoxesValueCorrect;*/
 
          /// <summary>
          /// Main form constructor
@@ -156,7 +164,6 @@ namespace LaboratoryBottle
         }
 
         //TODO: RSDN
-        //TODO: Убрать проверки из mainform
         //TODO: дубль
         /// <summary>
         /// ComboBox validation method
@@ -192,6 +199,7 @@ namespace LaboratoryBottle
                                              $"-{handleRadiusMaximumValue}) мм";
                 }
                 comboBox.BackColor = Color.White;
+                buildButton.Enabled = true;
             }
             catch (Exception exception)
             {
@@ -199,5 +207,23 @@ namespace LaboratoryBottle
                 comboBox.BackColor = Color.Salmon;
             }
         }
+        
+        /*
+        /// <summary>
+        /// Method returns true if all values in comboBoxes is true
+        /// </summary>
+        /// <returns></returns>
+        private bool IsAllParametersValueCorrect()
+        {
+            bool IsAllComboBoxesValueCorrect = true;
+
+            foreach (var parameter in _bottleParameters)
+            {
+                
+            }
+
+            return IsAllComboBoxesValueCorrect;
+        }
+        */
     }
 }
