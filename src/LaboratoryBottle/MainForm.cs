@@ -172,7 +172,6 @@ namespace LaboratoryBottle
         private void Combobox_Validating(object sender, EventArgs e)
         {
             if (!(sender is ComboBox comboBox)) return;
-
             try
             {
                 _comboboxDictionary.TryGetValue(comboBox,
@@ -199,31 +198,46 @@ namespace LaboratoryBottle
                                              $"-{handleRadiusMaximumValue}) мм";
                 }
                 comboBox.BackColor = Color.White;
+            }
+            catch (Exception)
+            {
+                if (comboBox == coverRadiusComboBox)
+                {
+                    handleBaseRadiusComboBox.Enabled = false;
+                }
+                if(comboBox == handleBaseRadiusComboBox)
+                {
+                    handleRadiusComboBox.Enabled = false;
+                }
+                comboBox.BackColor = Color.Salmon;
+            }
+            SwitchingBuildButton();
+        }
+
+
+        /// <summary>
+        /// Enabled BuildButton if values in all ComboBoxes are correct
+        /// </summary>
+        /// <returns></returns>
+        private void SwitchingBuildButton()
+        {
+            try
+            {
+                foreach (var comboBoxParameterTypePair in _comboboxDictionary)
+                {
+                    double.TryParse(comboBoxParameterTypePair.Key.Text, 
+                        out double parameterValue);
+                    _bottleParameters.SetParameterValueByType(
+                        parameterValue, comboBoxParameterTypePair.Value);
+                }
+
                 buildButton.Enabled = true;
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 buildButton.Enabled = false;
-                comboBox.BackColor = Color.Salmon;
             }
         }
         
-        /*
-        /// <summary>
-        /// Method returns true if all values in comboBoxes is true
-        /// </summary>
-        /// <returns></returns>
-        private bool IsAllParametersValueCorrect()
-        {
-            bool IsAllComboBoxesValueCorrect = true;
-
-            foreach (var parameter in _bottleParameters)
-            {
-                
-            }
-
-            return IsAllComboBoxesValueCorrect;
-        }
-        */
     }
 }

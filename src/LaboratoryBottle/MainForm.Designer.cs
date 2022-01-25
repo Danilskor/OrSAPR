@@ -409,10 +409,9 @@
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 24);
+            this.label4.Location = new System.Drawing.Point(3, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 24);
+            this.label4.Size = new System.Drawing.Size(128, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Радиус онования ручки C";
             // 
