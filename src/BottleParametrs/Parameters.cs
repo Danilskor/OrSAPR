@@ -7,40 +7,48 @@ namespace BottleParameters
     /// </summary>
     public class Parameters
     {
+        //TODO: RSDN
         /// <summary>
         /// Cover radius of the bottle
         /// </summary>
-        private Parameter _coverRadius = new Parameter(MIN_COVER_RADIUS, MAX_COVER_RADIUS);
+        private Parameter _coverRadius = 
+            new Parameter(MIN_COVER_RADIUS, MAX_COVER_RADIUS);
 
         /// <summary>
         /// Handle base radius of the bottle
         /// </summary>
-        private Parameter _handleBaseRadius = new Parameter(MIN_HANDLE_BASE_RADIUS, NOT_SET_MAX_OR_MIN_VALUE);
+        private Parameter _handleBaseRadius = 
+            new Parameter(MIN_HANDLE_BASE_RADIUS, NOT_SET_MAX_OR_MIN_VALUE);
 
         /// <summary>
         /// Handle radius of the bottle
         /// </summary>
-        private Parameter _handleRadius = new Parameter(NOT_SET_MAX_OR_MIN_VALUE, NOT_SET_MAX_OR_MIN_VALUE);
+        private Parameter _handleRadius = 
+            new Parameter(NOT_SET_MAX_OR_MIN_VALUE, NOT_SET_MAX_OR_MIN_VALUE);
 
         /// <summary>
         /// Handle length of the bottle
         /// </summary>
-        private Parameter _handleLength = new Parameter(MIN_HANDLE_LENGTH, MAX_HANDLE_LENGTH);
+        private Parameter _handleLength = 
+            new Parameter(MIN_HANDLE_LENGTH, MAX_HANDLE_LENGTH);
 
         /// <summary>
         /// HEIGHT of the bottle
         /// </summary>
-        private Parameter _height = new Parameter(MIN_HEIGHT, MAX_HEIGHT);
+        private Parameter _height = 
+            new Parameter(MIN_HEIGHT, MAX_HEIGHT);
 
         /// <summary>
         /// WIDTH of the bottle
         /// </summary>
-        private Parameter _width = new Parameter(MIN_WIDTH, MAX_WIDTH);
+        private Parameter _width = 
+            new Parameter(MIN_WIDTH, MAX_WIDTH);
 
         /// <summary>
         /// Wall thickness of the bottle
         /// </summary>
-        private Parameter _wallThickness = new Parameter(MIN_WALL_THICKNESS, MAX_WALL_THICKNESS);
+        private Parameter _wallThickness = 
+            new Parameter(MIN_WALL_THICKNESS, MAX_WALL_THICKNESS);
 
         /// <summary>
         /// Is the bottle straight of the bottle
@@ -142,7 +150,6 @@ namespace BottleParameters
             set => _isBottleStraight = value;
         }
 
-        //TODO: Переписать класс, используя инкапсуляцию на список параметров.
         /// <summary>
         ///Minimum value of Cover Radius
         /// </summary>
@@ -203,10 +210,10 @@ namespace BottleParameters
         /// </summary>
         public const double NOT_SET_MAX_OR_MIN_VALUE = -1;
 
+        //TODO: Несоответствие XML-комментария сигнатуре метода 
         /// <summary>
         /// Set default parameters
         /// </summary>
-        /// <param name="parametersList">Parameters List</param>
         public void SetDefaultParameters()
         {
             this.CoverRadius = 200;
@@ -216,6 +223,141 @@ namespace BottleParameters
             this.Height = 300;
             this.Width = 200;
             this.WallThickness = 7;
+        }
+
+        /// <summary>
+        /// Return parameter minimum value
+        /// </summary>
+        /// <param name="parameterType">Parameter type</param>
+        /// <returns>Parameter minimum value</returns>
+        public double GetMinimumValue(ParameterType parameterType)
+        {
+            switch (parameterType)
+            {
+                case ParameterType.CoverRadius:
+                {
+                    return this._coverRadius.MinimumValue;
+                }
+                case ParameterType.HandleBaseRadius:
+                {
+                    return this._handleBaseRadius.MinimumValue;
+                }
+                case ParameterType.HandleRadius:
+                {
+                    return this._handleRadius.MinimumValue;
+                }
+                case ParameterType.HandleLength:
+                {
+                    return this._handleLength.MinimumValue;
+                }
+                case ParameterType.Height:
+                {
+                    return this._height.MinimumValue;
+                }
+                case ParameterType.Width:
+                {
+                    return this._width.MinimumValue;
+                }
+                case ParameterType.WallThickness:
+                {
+                    return this._wallThickness.MinimumValue;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Return parameter maximum value
+        /// </summary>
+        /// <param name="parameterType">Parameter type</param>
+        /// <returns>Parameter maximum value</returns>
+        public double GetMaximumValue(ParameterType parameterType)
+        {
+            switch (parameterType)
+            {
+                case ParameterType.CoverRadius:
+                {
+                    return this._coverRadius.MaximumValue;
+                }
+                case ParameterType.HandleBaseRadius:
+                {
+                    return this._handleBaseRadius.MaximumValue;
+                }
+                case ParameterType.HandleRadius:
+                {
+                    return this._handleRadius.MaximumValue;
+                }
+                case ParameterType.HandleLength:
+                {
+                    return this._handleLength.MaximumValue;
+                }
+                case ParameterType.Height:
+                {
+                    return this._height.MaximumValue;
+                }
+                case ParameterType.Width:
+                {
+                    return this._width.MaximumValue;
+                }
+                case ParameterType.WallThickness:
+                {
+                    return this._wallThickness.MaximumValue;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+
+        public void SetParameterValueByType(dynamic value, ParameterType parameterType)
+        {
+            switch (parameterType)
+            {
+                case ParameterType.CoverRadius:
+                {
+                    this.CoverRadius = value;
+                    break;
+                }
+                case ParameterType.HandleBaseRadius:
+                {
+                    this.HandleBaseRadius = value;
+                    break;
+                }
+                case ParameterType.HandleRadius:
+                {
+                    this.HandleRadius = value;
+                    break;
+                }
+                case ParameterType.HandleLength:
+                {
+                    this.HandleLength = value;
+                    break;
+                }
+                case ParameterType.Height:
+                {
+                    this.Height = value;
+                    break;
+                }
+                case ParameterType.Width:
+                {
+                    this.Width = value;
+                    break;
+                }
+                case ParameterType.WallThickness:
+                {
+                    this.WallThickness = value;
+                    break;
+                }
+                case ParameterType.IsBottleStraight:
+                {
+                    this.IsBottleStraight = value;
+                    break;
+                }
+            }
         }
     }
 }

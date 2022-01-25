@@ -2,9 +2,13 @@
 using BottleParameters;
 using KompasConnector;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using static Validator.Validator;
+using System.ComponentModel;
+using System.Globalization;
 
 namespace LaboratoryBottle
 {
@@ -28,77 +32,25 @@ namespace LaboratoryBottle
         /// </summary>
         public Konnector _kompasConnector = new Konnector();
 
+        private Dictionary<ComboBox, ParameterType> _comboboxDictionary;
+
          /// <summary>
          /// Main form constructor
          /// </summary>
         public MainForm()
         {
             InitializeComponent();
-        }
 
-         /// <summary>
-         /// if an incorrect input was made in the combobox,
-         /// the input field is colored red, and the build button becomes inactive
-         /// </summary>
-         /// <param name="comboBox">Combobox in which the input is made</param>
-         /// <param name="fieldName">Name of input field</param>
-         /// <param name="parameter"></param>
-         private void ComboboxInputError(ComboBox comboBox, string fieldName, ParameterTypeEnum parameterType)
-        {
-            int maximumNumbers = 3;
-            try
+            _comboboxDictionary = new Dictionary<ComboBox, ParameterType>
             {
-                AssertStringOnLength(comboBox.Text, maximumNumbers, fieldName);
-                AssertStringOnNumbers(comboBox.Text, fieldName);
-
-                var value = ConvertStringToDouble(comboBox.Text);
-                switch (parameterType)
-                {
-                    case ParameterTypeEnum.CoverRadius:
-                    {
-                        _bottleParameters.CoverRadius = value;
-                            break;
-                    }
-                    case ParameterTypeEnum.HandleBaseRadius:
-                    {
-                        _bottleParameters.HandleBaseRadius = value;
-                            break;
-                    }
-                    case ParameterTypeEnum.HandleRadius:
-                    {
-                        _bottleParameters.HandleRadius = value;
-                            break;
-                    }
-                    case ParameterTypeEnum.HandleLength:
-                    {
-                        _bottleParameters.HandleLength = value;
-                            break;
-                    }
-                    case ParameterTypeEnum.Height:
-                    {
-                        _bottleParameters.Height = value;
-                            break;
-                    }
-                    case ParameterTypeEnum.Width:
-                    {
-                        _bottleParameters.Width = value;
-                            break;
-                    }
-                    case ParameterTypeEnum.WallThickness:
-                    {
-                        _bottleParameters.WallThickness = value;
-                            break;
-                    }
-                }
-                comboBox.BackColor = Color.White;
-                buildButton.Enabled = true;
-
-            }
-            catch (ArgumentException exception)
-            {
-                comboBox.BackColor = Color.Salmon;
-                buildButton.Enabled = false;
-            }
+                {coverRadiusComboBox, ParameterType.CoverRadius},
+                {handleBaseRadiusComboBox, ParameterType.HandleBaseRadius},
+                {handleRadiusComboBox, ParameterType.HandleRadius},
+                {handleLengthComboBox, ParameterType.HandleLength},
+                {heightComboBox, ParameterType.Height},
+                {widthComboBox, ParameterType.Width},
+                {wallThicknessComboBox, ParameterType.WallThickness},
+            };
         }
 
         /// <summary>
@@ -111,126 +63,12 @@ namespace LaboratoryBottle
             double.TryParse(text, out double numberResult);
             return numberResult;
         }
-
-        /// <summary>
-        /// Сalculates the number of digits in the integer part of a number
-        /// </summary>
-        /// <param name="value">Input double</param>
-        /// <returns name="valueDigitsNumber">
-        /// Output number of digits integer part of double</returns>
-        private int CalculateValueDigitsNumber(double value)
-        {
-            int valueDigitsNumber = 0;
-            while (value > 0.99)
-            {
-                valueDigitsNumber++;
-                value /= 10;
-            }
-
-            return valueDigitsNumber;
-        }
-
-        //TODO: Убрать проверки из mainform
-        /// <summary>
-        /// Event handler cover radius combobox
-        /// </summary>
-        private void coverRadiusComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            var value = ConvertStringToDouble(coverRadiusComboBox.Text);
-
-            ComboboxInputError(coverRadiusComboBox, "CoverRadius", 
-                ParameterTypeEnum.CoverRadius);
-
-            try
-            {
-                _bottleParameters.CoverRadius = value;
-                handleBaseRadiusComboBox.Enabled = true;
-                handleBaseRadiusLabel.Text = $"(10-" +
-                                             $"{value / 4}) мм";
-            }
-            catch (Exception exception)
-            {
-                handleBaseRadiusComboBox.Enabled = false;
-            }
-
-
-        }
-
-        /// <summary>
-        /// Event handler handle base radius combobox
-        /// </summary>
-        private void handleBaseRadiusComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            var value = ConvertStringToDouble(handleBaseRadiusComboBox.Text);
-
-            ComboboxInputError(handleBaseRadiusComboBox, "handle base radius",
-                ParameterTypeEnum.HandleBaseRadius);
-
-            try
-            {
-                _bottleParameters.HandleBaseRadius = value;
-                handleRadiusLabel.Text = $"({value + 20}-{value + 50 }) мм";
-                handleRadiusComboBox.Enabled = true;
-            }
-            catch (Exception exception)
-            {
-                handleRadiusComboBox.Enabled = false;
-            }
-        }
-
-        /// <summary>
-        /// Event handler handle radius combobox
-        /// </summary>
-        private void handleRadiusComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            ComboboxInputError(handleRadiusComboBox, "handle radius",
-                ParameterTypeEnum.HandleRadius);
-
-        }
-
-        /// <summary>
-        /// Event handler handle length combobox
-        /// </summary>
-        private void handleLengthComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            
-            ComboboxInputError(handleLengthComboBox, "handle length",
-               ParameterTypeEnum.HandleLength);
-        }
-
-        /// <summary>
-        /// Event handler height combobox
-        /// </summary>
-        private void heightComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            ComboboxInputError(heightComboBox, "height",
-                ParameterTypeEnum.Height);
-        }
-
-        /// <summary>
-        /// Event handler width combobox
-        /// </summary>
-        private void widthComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            ComboboxInputError(widthComboBox, "width",
-               ParameterTypeEnum.Width);
-        }
-
-        /// <summary>
-        /// Event handler wall thickness combobox
-        /// </summary>
-        private void wallThicknessComboBox_TextUpdate(object sender, EventArgs e)
-        {
-            ComboboxInputError(wallThicknessComboBox, "wall thickness",
-                ParameterTypeEnum.WallThickness);
-        }
-
+        
         /// <summary>
         /// Event handler "Build" button
         /// </summary>
-        private void buildButton_Click(object sender, EventArgs e)
+        private void BuildButton_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 _bottleParameters.CoverRadius = ConvertStringToDouble(coverRadiusComboBox.Text);
@@ -263,15 +101,16 @@ namespace LaboratoryBottle
 
         }
 
+
         /// <summary>
         ///  Event handler button for set default parameters
         /// </summary>
-        private void defaultParametersButton_Click(object sender, EventArgs e)
+        private void DefaultParametersButton_Click(object sender, EventArgs e)
         {
             _bottleParameters.SetDefaultParameters();
 
             coverRadiusComboBox.Text =
-                _bottleParameters.CoverRadius.ToString();
+                _bottleParameters.CoverRadius.ToString(CultureInfo.CurrentCulture);
             handleBaseRadiusComboBox.Text = 
                 _bottleParameters.HandleBaseRadius.ToString();
             wallThicknessComboBox.Text = 
@@ -298,10 +137,11 @@ namespace LaboratoryBottle
             wallThicknessComboBox.BackColor = Color.White;
         }
 
+        //TODO: RSDN
         /// <summary>
-        /// Bottle shape selection handler
+        /// Bottle shape selection event handler
         /// </summary>
-        private void straightFlaskRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void StraightFlaskRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             _bottleParameters.IsBottleStraight = 
                 straightFlaskRadioButton.Checked;
@@ -313,6 +153,51 @@ namespace LaboratoryBottle
             flaskHandlePictureBox.Visible = !straightFlaskRadioButton.Checked;
             aboveFlaskHandlePictureBox.Visible = !straightFlaskRadioButton.Checked;
             flaskPictureBox.Visible = !straightFlaskRadioButton.Checked;
+        }
+
+        //TODO: RSDN
+        //TODO: Убрать проверки из mainform
+        //TODO: дубль
+        /// <summary>
+        /// ComboBox validation method
+        /// </summary>
+        /// <param name="sender">ComboBox</param>
+        private void Combobox_Validating(object sender, EventArgs e)
+        {
+            if (!(sender is ComboBox comboBox)) return;
+
+            try
+            {
+                _comboboxDictionary.TryGetValue(comboBox,
+                    out var parameterInComboboxType);
+                _bottleParameters.SetParameterValueByType(double.Parse(comboBox.Text),
+                    parameterInComboboxType);
+
+                if (comboBox == coverRadiusComboBox)
+                {
+                    var handleBaseRadiusMaximumValue =
+                        _bottleParameters.GetMaximumValue(ParameterType.HandleBaseRadius);
+                    handleBaseRadiusComboBox.Enabled = true;
+                    handleBaseRadiusLabel.Text = $"(10-" +
+                                                 $"{handleBaseRadiusMaximumValue}) мм";
+                }
+                else if(comboBox == handleBaseRadiusComboBox)
+                {
+                    handleRadiusComboBox.Enabled = true;
+                    var handleRadiusMinimumValue =
+                        _bottleParameters.GetMinimumValue(ParameterType.HandleRadius);
+                    var handleRadiusMaximumValue =
+                        _bottleParameters.GetMaximumValue(ParameterType.HandleRadius);
+                    handleRadiusLabel.Text = $"({handleRadiusMinimumValue}" +
+                                             $"-{handleRadiusMaximumValue}) мм";
+                }
+                comboBox.BackColor = Color.White;
+            }
+            catch (Exception exception)
+            {
+                buildButton.Enabled = false;
+                comboBox.BackColor = Color.Salmon;
+            }
         }
     }
 }

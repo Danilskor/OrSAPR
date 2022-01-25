@@ -1,9 +1,9 @@
-﻿namespace LaboratoryBottle
+﻿namespace BottleParameters
 {
     /// <summary>
     /// Contains parameter type
     /// </summary>
-    public enum ParameterTypeEnum
+    public enum ParameterType
     {
         CoverRadius,
         HandleBaseRadius,
@@ -11,6 +11,7 @@
         HandleLength,
         Height,
         Width,
-        WallThickness
+        WallThickness,
+        IsBottleStraight
     }
 }

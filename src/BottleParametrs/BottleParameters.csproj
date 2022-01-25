@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Parameter.cs" />
     <Compile Include="Parameters.cs" />
+    <Compile Include="ParameterType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -101,19 +101,9 @@ namespace BottleParameters
 
         public bool Equals(Parameter other)
         {
-            if (ReferenceEquals(null,other))
-            {
-                return false;
-            }
-
-            if (this.ParameterValue == other.ParameterValue ||
-                this.MaximumValue == other.MaximumValue ||
-                this.MinimumValue == other.MinimumValue)
-            {
-                return true;
-            }
-
-            return this.ParameterValue == other.ParameterValue;
+            return this.ParameterValue == other.ParameterValue ||
+                   this.MaximumValue == other.MaximumValue ||
+                   this.MinimumValue == other.MinimumValue;
         }
     }
 }
