@@ -65,6 +65,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flaskWithNeckRadioButton = new System.Windows.Forms.RadioButton();
             this.straightFlaskRadioButton = new System.Windows.Forms.RadioButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flaskPictureBox)).BeginInit();
@@ -76,6 +79,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.aboveStraightFlaskHandlePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.straightFlaskHandlePictureBox)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -83,9 +89,9 @@
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.flaskPictureBox);
             this.groupBox1.Controls.Add(this.straightFlaskPictureBox);
-            this.groupBox1.Location = new System.Drawing.Point(445, 8);
+            this.groupBox1.Location = new System.Drawing.Point(444, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(359, 426);
+            this.groupBox1.Size = new System.Drawing.Size(359, 446);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Размеры колбы";
@@ -96,7 +102,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.17241F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.82759F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel1.Controls.Add(this.wallThicknessLabel, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.widthLabel, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.heightLabel, 2, 0);
@@ -106,7 +112,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.heightComboBox, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -119,7 +125,7 @@
             // 
             this.wallThicknessLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.wallThicknessLabel.AutoSize = true;
-            this.wallThicknessLabel.Location = new System.Drawing.Point(217, 57);
+            this.wallThicknessLabel.Location = new System.Drawing.Point(214, 57);
             this.wallThicknessLabel.Name = "wallThicknessLabel";
             this.wallThicknessLabel.Size = new System.Drawing.Size(53, 13);
             this.wallThicknessLabel.TabIndex = 8;
@@ -129,7 +135,7 @@
             // 
             this.widthLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.widthLabel.AutoSize = true;
-            this.widthLabel.Location = new System.Drawing.Point(217, 31);
+            this.widthLabel.Location = new System.Drawing.Point(214, 31);
             this.widthLabel.Name = "widthLabel";
             this.widthLabel.Size = new System.Drawing.Size(71, 13);
             this.widthLabel.TabIndex = 7;
@@ -139,7 +145,7 @@
             // 
             this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heightLabel.AutoSize = true;
-            this.heightLabel.Location = new System.Drawing.Point(217, 6);
+            this.heightLabel.Location = new System.Drawing.Point(214, 6);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(71, 13);
             this.heightLabel.TabIndex = 5;
@@ -149,9 +155,9 @@
             // 
             this.wallThicknessComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.wallThicknessComboBox.FormattingEnabled = true;
-            this.wallThicknessComboBox.Location = new System.Drawing.Point(121, 53);
+            this.wallThicknessComboBox.Location = new System.Drawing.Point(119, 53);
             this.wallThicknessComboBox.Name = "wallThicknessComboBox";
-            this.wallThicknessComboBox.Size = new System.Drawing.Size(90, 21);
+            this.wallThicknessComboBox.Size = new System.Drawing.Size(89, 21);
             this.wallThicknessComboBox.TabIndex = 7;
             this.wallThicknessComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -174,9 +180,9 @@
             "250",
             "300",
             "400"});
-            this.widthComboBox.Location = new System.Drawing.Point(121, 28);
+            this.widthComboBox.Location = new System.Drawing.Point(119, 28);
             this.widthComboBox.Name = "widthComboBox";
-            this.widthComboBox.Size = new System.Drawing.Size(90, 21);
+            this.widthComboBox.Size = new System.Drawing.Size(89, 21);
             this.widthComboBox.TabIndex = 6;
             this.widthComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -205,9 +211,9 @@
             this.heightComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.heightComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.heightComboBox.FormattingEnabled = true;
-            this.heightComboBox.Location = new System.Drawing.Point(121, 3);
+            this.heightComboBox.Location = new System.Drawing.Point(119, 3);
             this.heightComboBox.Name = "heightComboBox";
-            this.heightComboBox.Size = new System.Drawing.Size(90, 21);
+            this.heightComboBox.Size = new System.Drawing.Size(89, 21);
             this.heightComboBox.TabIndex = 5;
             this.heightComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -217,7 +223,7 @@
             this.flaskPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("flaskPictureBox.Image")));
             this.flaskPictureBox.Location = new System.Drawing.Point(6, 102);
             this.flaskPictureBox.Name = "flaskPictureBox";
-            this.flaskPictureBox.Size = new System.Drawing.Size(343, 316);
+            this.flaskPictureBox.Size = new System.Drawing.Size(343, 333);
             this.flaskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.flaskPictureBox.TabIndex = 8;
             this.flaskPictureBox.TabStop = false;
@@ -228,7 +234,7 @@
             this.straightFlaskPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("straightFlaskPictureBox.Image")));
             this.straightFlaskPictureBox.Location = new System.Drawing.Point(6, 102);
             this.straightFlaskPictureBox.Name = "straightFlaskPictureBox";
-            this.straightFlaskPictureBox.Size = new System.Drawing.Size(343, 316);
+            this.straightFlaskPictureBox.Size = new System.Drawing.Size(343, 333);
             this.straightFlaskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.straightFlaskPictureBox.TabIndex = 9;
             this.straightFlaskPictureBox.TabStop = false;
@@ -241,7 +247,7 @@
             this.groupBox2.Controls.Add(this.aboveFlaskHandlePictureBox);
             this.groupBox2.Controls.Add(this.aboveStraightFlaskHandlePictureBox);
             this.groupBox2.Controls.Add(this.straightFlaskHandlePictureBox);
-            this.groupBox2.Location = new System.Drawing.Point(12, 8);
+            this.groupBox2.Location = new System.Drawing.Point(11, 117);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(427, 341);
             this.groupBox2.TabIndex = 1;
@@ -264,7 +270,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.27338F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.72662F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.handleRadiusComboBox, 1, 2);
@@ -312,9 +318,9 @@
             this.handleRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.handleRadiusComboBox.Enabled = false;
             this.handleRadiusComboBox.FormattingEnabled = true;
-            this.handleRadiusComboBox.Location = new System.Drawing.Point(141, 51);
+            this.handleRadiusComboBox.Location = new System.Drawing.Point(139, 51);
             this.handleRadiusComboBox.Name = "handleRadiusComboBox";
-            this.handleRadiusComboBox.Size = new System.Drawing.Size(92, 21);
+            this.handleRadiusComboBox.Size = new System.Drawing.Size(91, 21);
             this.handleRadiusComboBox.TabIndex = 3;
             this.handleRadiusComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -323,9 +329,9 @@
             this.handleBaseRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.handleBaseRadiusComboBox.Enabled = false;
             this.handleBaseRadiusComboBox.FormattingEnabled = true;
-            this.handleBaseRadiusComboBox.Location = new System.Drawing.Point(141, 27);
+            this.handleBaseRadiusComboBox.Location = new System.Drawing.Point(139, 27);
             this.handleBaseRadiusComboBox.Name = "handleBaseRadiusComboBox";
-            this.handleBaseRadiusComboBox.Size = new System.Drawing.Size(92, 21);
+            this.handleBaseRadiusComboBox.Size = new System.Drawing.Size(91, 21);
             this.handleBaseRadiusComboBox.TabIndex = 2;
             this.handleBaseRadiusComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -334,9 +340,9 @@
             this.coverRadiusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.coverRadiusComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.coverRadiusComboBox.FormattingEnabled = true;
-            this.coverRadiusComboBox.Location = new System.Drawing.Point(141, 3);
+            this.coverRadiusComboBox.Location = new System.Drawing.Point(139, 3);
             this.coverRadiusComboBox.Name = "coverRadiusComboBox";
-            this.coverRadiusComboBox.Size = new System.Drawing.Size(92, 21);
+            this.coverRadiusComboBox.Size = new System.Drawing.Size(91, 21);
             this.coverRadiusComboBox.TabIndex = 1;
             this.coverRadiusComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -344,9 +350,9 @@
             // 
             this.handleLengthComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.handleLengthComboBox.FormattingEnabled = true;
-            this.handleLengthComboBox.Location = new System.Drawing.Point(141, 75);
+            this.handleLengthComboBox.Location = new System.Drawing.Point(139, 75);
             this.handleLengthComboBox.Name = "handleLengthComboBox";
-            this.handleLengthComboBox.Size = new System.Drawing.Size(92, 21);
+            this.handleLengthComboBox.Size = new System.Drawing.Size(91, 21);
             this.handleLengthComboBox.TabIndex = 4;
             this.handleLengthComboBox.TextUpdate += new System.EventHandler(this.Combobox_Validating);
             // 
@@ -354,7 +360,7 @@
             // 
             this.coverRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.coverRadiusLabel.AutoSize = true;
-            this.coverRadiusLabel.Location = new System.Drawing.Point(239, 5);
+            this.coverRadiusLabel.Location = new System.Drawing.Point(236, 5);
             this.coverRadiusLabel.Name = "coverRadiusLabel";
             this.coverRadiusLabel.Size = new System.Drawing.Size(71, 13);
             this.coverRadiusLabel.TabIndex = 9;
@@ -364,7 +370,7 @@
             // 
             this.handleBaseRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.handleBaseRadiusLabel.AutoSize = true;
-            this.handleBaseRadiusLabel.Location = new System.Drawing.Point(239, 29);
+            this.handleBaseRadiusLabel.Location = new System.Drawing.Point(236, 29);
             this.handleBaseRadiusLabel.Name = "handleBaseRadiusLabel";
             this.handleBaseRadiusLabel.Size = new System.Drawing.Size(59, 13);
             this.handleBaseRadiusLabel.TabIndex = 10;
@@ -374,7 +380,7 @@
             // 
             this.handleRadiusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.handleRadiusLabel.AutoSize = true;
-            this.handleRadiusLabel.Location = new System.Drawing.Point(239, 53);
+            this.handleRadiusLabel.Location = new System.Drawing.Point(236, 53);
             this.handleRadiusLabel.Name = "handleRadiusLabel";
             this.handleRadiusLabel.Size = new System.Drawing.Size(59, 13);
             this.handleRadiusLabel.TabIndex = 11;
@@ -384,7 +390,7 @@
             // 
             this.handleLengthLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.handleLengthLabel.AutoSize = true;
-            this.handleLengthLabel.Location = new System.Drawing.Point(239, 79);
+            this.handleLengthLabel.Location = new System.Drawing.Point(236, 79);
             this.handleLengthLabel.Name = "handleLengthLabel";
             this.handleLengthLabel.Size = new System.Drawing.Size(59, 13);
             this.handleLengthLabel.TabIndex = 12;
@@ -452,7 +458,7 @@
             this.buildButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buildButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buildButton.Location = new System.Drawing.Point(11, 440);
+            this.buildButton.Location = new System.Drawing.Point(11, 463);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(106, 33);
             this.buildButton.TabIndex = 7;
@@ -462,8 +468,9 @@
             // 
             // defaultParametersButton
             // 
+            this.defaultParametersButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.defaultParametersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.defaultParametersButton.Location = new System.Drawing.Point(128, 440);
+            this.defaultParametersButton.Location = new System.Drawing.Point(123, 463);
             this.defaultParametersButton.Name = "defaultParametersButton";
             this.defaultParametersButton.Size = new System.Drawing.Size(218, 33);
             this.defaultParametersButton.TabIndex = 8;
@@ -473,20 +480,20 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.flaskWithNeckRadioButton);
-            this.groupBox3.Controls.Add(this.straightFlaskRadioButton);
-            this.groupBox3.Location = new System.Drawing.Point(12, 364);
+            this.groupBox3.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox3.Location = new System.Drawing.Point(11, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(157, 70);
+            this.groupBox3.Size = new System.Drawing.Size(427, 106);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Форма колбы";
             // 
             // flaskWithNeckRadioButton
             // 
+            this.flaskWithNeckRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flaskWithNeckRadioButton.AutoSize = true;
             this.flaskWithNeckRadioButton.Checked = true;
-            this.flaskWithNeckRadioButton.Location = new System.Drawing.Point(11, 19);
+            this.flaskWithNeckRadioButton.Location = new System.Drawing.Point(3, 32);
             this.flaskWithNeckRadioButton.Name = "flaskWithNeckRadioButton";
             this.flaskWithNeckRadioButton.Size = new System.Drawing.Size(127, 17);
             this.flaskWithNeckRadioButton.TabIndex = 8;
@@ -496,8 +503,9 @@
             // 
             // straightFlaskRadioButton
             // 
+            this.straightFlaskRadioButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.straightFlaskRadioButton.AutoSize = true;
-            this.straightFlaskRadioButton.Location = new System.Drawing.Point(11, 42);
+            this.straightFlaskRadioButton.Location = new System.Drawing.Point(219, 32);
             this.straightFlaskRadioButton.Name = "straightFlaskRadioButton";
             this.straightFlaskRadioButton.Size = new System.Drawing.Size(98, 17);
             this.straightFlaskRadioButton.TabIndex = 8;
@@ -505,12 +513,53 @@
             this.straightFlaskRadioButton.UseVisualStyleBackColor = true;
             this.straightFlaskRadioButton.CheckedChanged += new System.EventHandler(this.StraightFlaskRadioButton_CheckedChanged);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(346, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(57, 76);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(136, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(59, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.68293F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.09756F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.63415F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.07317F));
+            this.tableLayoutPanel3.Controls.Add(this.flaskWithNeckRadioButton, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.straightFlaskRadioButton, 2, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 18);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(410, 82);
+            this.tableLayoutPanel3.TabIndex = 9;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(808, 485);
+            this.ClientSize = new System.Drawing.Size(808, 508);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.defaultParametersButton);
             this.Controls.Add(this.buildButton);
@@ -533,7 +582,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.aboveStraightFlaskHandlePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.straightFlaskHandlePictureBox)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -576,6 +628,9 @@
         private System.Windows.Forms.PictureBox straightFlaskHandlePictureBox;
         private System.Windows.Forms.PictureBox aboveStraightFlaskHandlePictureBox;
         private System.Windows.Forms.PictureBox straightFlaskPictureBox;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }
 
