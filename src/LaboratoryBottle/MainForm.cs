@@ -37,12 +37,7 @@ namespace LaboratoryBottle
         /// </summary>
         private Dictionary<ComboBox, ParameterType> _comboboxDictionary;
 
-        /*/// <summary>
-        /// An array indicating that the values ​​in all comboBoxes are correct
-        /// </summary>
-        private Dictionary<ParameterType, > _allTextBoxesValueCorrect;*/
-
-         /// <summary>
+        /// <summary>
          /// Main form constructor
          /// </summary>
         public MainForm()
