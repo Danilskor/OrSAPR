@@ -33,13 +33,13 @@ namespace UnitTests
             }
         }
 
-        [TestCase(201, ParameterType.CoverRadius, TestName = "Positive parameters get")]
-        [TestCase(31, ParameterType.HandleBaseRadius, TestName = "Positive parameters get")]
-        [TestCase(31, ParameterType.HandleRadius, TestName = "Positive parameters get")]
-        [TestCase(21, ParameterType.HandleLength, TestName = "Positive parameters get")]
-        [TestCase(351, ParameterType.Height, TestName = "Positive parameters get")]
-        [TestCase(201, ParameterType.Width, TestName = "Positive parameters get")]
-        [TestCase(10, ParameterType.WallThickness, TestName = "Positive parameters get")]
+        [TestCase(201, ParameterType.CoverRadius, TestName = "Positive cover radius get")]
+        [TestCase(31, ParameterType.HandleBaseRadius, TestName = "Positive Handle Base Radius get")]
+        [TestCase(31, ParameterType.HandleRadius, TestName = "Positive Handle Radius get")]
+        [TestCase(21, ParameterType.HandleLength, TestName = "Positive Handle Length get")]
+        [TestCase(351, ParameterType.Height, TestName = "Positive Height get")]
+        [TestCase(201, ParameterType.Width, TestName = "Positive Width get")]
+        [TestCase(10, ParameterType.WallThickness, TestName = "Positive Wall Thickness get")]
         public void Parameters_GetCorrectValue(double testParameterValue, 
              ParameterType parameterType)
         {
@@ -77,14 +77,14 @@ namespace UnitTests
             Assert.AreEqual(actualValue, testValue);
         }
 
-        [TestCase(ParameterType.CoverRadius, TestName = "Positive Minimum Value Parameters Get")]
-        [TestCase(ParameterType.HandleBaseRadius, TestName = "Positive Minimum Value Parameters Get")]
-        [TestCase(ParameterType.HandleRadius, TestName = "Positive Minimum Value Parameters Get")]
-        [TestCase(ParameterType.HandleLength, TestName = "Positive Minimum Value Parameters Get")]
-        [TestCase(ParameterType.Height, TestName = "Positive Minimum Value Parameters Get")]
-        [TestCase(ParameterType.Width, TestName = "Positive Minimum Value Parameters Get")]
+        [TestCase(ParameterType.CoverRadius, TestName = "Positive Minimum Value cover radius Get")]
+        [TestCase(ParameterType.HandleBaseRadius, TestName = "Positive Minimum Value Handle Radius Get")]
+        [TestCase(ParameterType.HandleRadius, TestName = "Positive Minimum Value Handle Length set Get")]
+        [TestCase(ParameterType.HandleLength, TestName = "Positive Minimum Value Height Get")]
+        [TestCase(ParameterType.Height, TestName = "Positive Minimum Value Width Get")]
+        [TestCase(ParameterType.Width, TestName = "Positive Minimum Value Wall Thickness Get")]
         [TestCase(ParameterType.WallThickness, TestName = "Positive Minimum Value Parameters Get")]
-        [TestCase(ParameterType.IsBottleStraight, TestName = "Positive Minimum Value Parameters Get")]
+        [TestCase(ParameterType.IsBottleStraight, TestName = "Positive Minimum Value Is Bottle Straight Get")]
         public void Parameters_GetCorrectMinimumValues(ParameterType parameterType)
         {
             var testParameters = new Parameters();
@@ -144,14 +144,14 @@ namespace UnitTests
             Assert.AreEqual(expectedMinimumValue, actualMinimumValue);
         }
 
-        [TestCase(ParameterType.CoverRadius, TestName = "Positive Maximum Value Parameters Get")]
-        [TestCase(ParameterType.HandleBaseRadius, TestName = "Positive Maximum Value Parameters Get")]
-        [TestCase(ParameterType.HandleRadius, TestName = "Positive Maximum Value Parameters Get")]
-        [TestCase(ParameterType.HandleLength, TestName = "Positive Maximum Value Parameters Get")]
-        [TestCase(ParameterType.Height, TestName = "Positive Maximum Value Parameters Get")]
-        [TestCase(ParameterType.Width, TestName = "Positive Maximum Value Parameters Get")]
+        [TestCase(ParameterType.CoverRadius, TestName = "Positive Maximum Value cover radius Get")]
+        [TestCase(ParameterType.HandleBaseRadius, TestName = "Positive Maximum Value Handle Radius Get")]
+        [TestCase(ParameterType.HandleRadius, TestName = "Positive Maximum Value Handle Length set Get")]
+        [TestCase(ParameterType.HandleLength, TestName = "Positive Maximum Value Height Get")]
+        [TestCase(ParameterType.Height, TestName = "Positive Maximum Value Width Get")]
+        [TestCase(ParameterType.Width, TestName = "Positive Maximum Value Wall Thickness Get")]
         [TestCase(ParameterType.WallThickness, TestName = "Positive Maximum Value Parameters Get")]
-        [TestCase(ParameterType.IsBottleStraight, TestName = "Positive Maximum Value Parameters Get")]
+        [TestCase(ParameterType.IsBottleStraight, TestName = "Positive Maximum Value Is Bottle Straight Get")]
         public void Parameters_GetCorrectMaximumValues(ParameterType parameterType)
         {
             var testParameters = new Parameters();
