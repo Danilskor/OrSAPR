@@ -20,19 +20,20 @@ namespace UnitTests
             //Act
             var actual = new Parameters();
             actual = SetDefaultValues(actual);
-            //TODO: конструктор?
 
+            //TODO: дубль
             //Assert
             foreach (PropertyInfo expectedProperty in expected.GetType().GetProperties())
             {
                 var propertyName = expectedProperty.Name;
-                //TODO: nameof()?
+                
                 var actualValue = actual.GetType().GetProperty(propertyName).GetValue(actual);
                 var expectedValue = expectedProperty.GetValue(expected);
                 Assert.AreEqual(expectedValue, actualValue);
             }
         }
 
+        //TODO: RSDN
         [TestCase(201, ParameterType.CoverRadius, TestName = "Positive cover radius get")]
         [TestCase(31, ParameterType.HandleBaseRadius, TestName = "Positive Handle Base Radius get")]
         [TestCase(31, ParameterType.HandleRadius, TestName = "Positive Handle Radius get")]
@@ -47,6 +48,7 @@ namespace UnitTests
             var actual = new Parameters();
             actual = SetDefaultValues(actual);
 
+            //TODO: дубль
             actual.SetParameterValueByType(testParameterValue, parameterType);
             var actualPropertyObject = actual.GetType().GetProperty(parameterType.ToString()).GetValue(actual);
             
@@ -71,6 +73,7 @@ namespace UnitTests
 
             testParameters.SetParameterValueByType(testValue, parameterType);
 
+            //TODO: дубль
             var actualValue = testParameters.GetType().
                 GetProperty(parameterType.ToString()).
                 GetValue(testParameters);
@@ -92,6 +95,7 @@ namespace UnitTests
             double actualMinimumValue = 0;
             switch (parameterType)
             {
+                //TODO: дубль
                 case ParameterType.CoverRadius:
                 {
                     expectedMinimumValue = Parameters.MIN_COVER_RADIUS;
@@ -159,6 +163,7 @@ namespace UnitTests
             double actualMaximumValue = 0;
             switch (parameterType)
             {
+                //TODO: дубль
                 case ParameterType.CoverRadius:
                 {
                     expectedMaximumValue = Parameters.MAX_COVER_RADIUS;
@@ -211,6 +216,7 @@ namespace UnitTests
             Assert.AreEqual(expectedMaximumValue, actualMaximumValue);
         }
 
+        //TODO:
         /// <summary>
         /// Set default parameters values
         /// </summary>

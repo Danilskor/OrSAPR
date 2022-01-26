@@ -139,8 +139,7 @@ namespace LaboratoryBottle
             widthComboBox.BackColor = Color.White;
             wallThicknessComboBox.BackColor = Color.White;
         }
-
-        //TODO: RSDN
+        
         /// <summary>
         /// Bottle shape selection event handler
         /// </summary>
@@ -157,9 +156,7 @@ namespace LaboratoryBottle
             aboveFlaskHandlePictureBox.Visible = !straightFlaskRadioButton.Checked;
             flaskPictureBox.Visible = !straightFlaskRadioButton.Checked;
         }
-
-        //TODO: RSDN
-        //TODO: дубль
+        
         /// <summary>
         /// ComboBox validation method
         /// </summary>
