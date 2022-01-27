@@ -5,9 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using static Validator.Validator;
-using System.ComponentModel;
 using System.Globalization;
 
 namespace LaboratoryBottle

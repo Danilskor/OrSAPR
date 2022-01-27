@@ -48,11 +48,5 @@
     <Compile Include="ParameterType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Validator\Validator.csproj">
-      <Project>{fb74f926-6041-4a81-94b5-b9eafccf8505}</Project>
-      <Name>Validator</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
