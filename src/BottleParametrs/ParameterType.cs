@@ -1,6 +1,5 @@
 ﻿namespace BottleParameters
 {
-    //TODO: RSDN
     /// <summary>
     /// Contains parameter type
     /// </summary>

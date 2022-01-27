@@ -7,7 +7,6 @@ namespace BottleParameters
     /// </summary>
     public class Parameters
     {
-        //TODO: RSDN
         /// <summary>
         /// Cover radius of the bottle
         /// </summary>
@@ -209,8 +208,7 @@ namespace BottleParameters
         /// Not set max or min value
         /// </summary>
         public const double NOT_SET_MAX_OR_MIN_VALUE = -1;
-
-        //TODO: Несоответствие XML-комментария сигнатуре метода 
+        
         /// <summary>
         /// Set default parameters
         /// </summary>
@@ -313,6 +311,7 @@ namespace BottleParameters
             }
         }
 
+        //TODO: XML
         public void SetParameterValueByType(dynamic value, ParameterType parameterType)
         {
             switch (parameterType)

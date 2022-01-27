@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using BottleParameters;
 
@@ -11,6 +7,7 @@ namespace UnitTests
     /// <summary>
     /// Class for testing parameter
     /// </summary>
+    [TestFixture]
     class ParameterTest
     {
         [TestCase(TestName = "Positive parameter setter")]
