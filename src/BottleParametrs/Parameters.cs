@@ -310,8 +310,7 @@ namespace BottleParameters
                 }
             }
         }
-
-        //TODO: XML
+        
         /// <summary>
         /// Set parameter by parameterType
         /// </summary>
