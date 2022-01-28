@@ -20,7 +20,6 @@ namespace UnitTests
             //Act
             var actual = SetDefaultValues();
 
-            //TODO: дубль
             //Assert
             foreach (PropertyInfo expectedProperty in expected.GetType().GetProperties())
             {
@@ -52,7 +51,6 @@ namespace UnitTests
             Assert.AreEqual(testParameterValue, actualPropertyObject);
         }
 
-        //TODO: дубль
         [TestCase(200, ParameterType.CoverRadius, TestName = "Positive cover radius set")]
         [TestCase(50, ParameterType.HandleBaseRadius, TestName = "Positive Handle Base Radius set")]
         [TestCase(30, ParameterType.HandleRadius, TestName = "Positive Handle Radius set")]
