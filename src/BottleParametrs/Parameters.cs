@@ -315,8 +315,8 @@ namespace BottleParameters
         /// <summary>
         /// Set parameter by parameterType
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="parameterType"></param>
+        /// <param name="value">New parameter value</param>
+        /// <param name="parameterType">Parameter type</param>
         public void SetParameterValueByType(dynamic value, ParameterType parameterType)
         {
             switch (parameterType)
