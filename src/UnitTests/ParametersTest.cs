@@ -32,8 +32,7 @@ namespace UnitTests
                 Assert.AreEqual(expectedValue, actualValue);
             }
         }
-
-        //TODO: RSDN
+        
         [TestCase(201, ParameterType.CoverRadius, 
             TestName = "Positive cover radius get")]
         [TestCase(31, ParameterType.HandleBaseRadius, 
@@ -55,14 +54,11 @@ namespace UnitTests
             var actual = SetDefaultValues();
             
             actual.SetParameterValueByType(testParameterValue, parameterType);
-            //TODO: RSDN
-            //TODO: дубль
             var actualPropertyObject = GetPropertyValue(actual, parameterType);
 
             Assert.AreEqual(testParameterValue, actualPropertyObject);
         }
-
-        //TODO: RSDN
+        
         [TestCase(200, ParameterType.CoverRadius, 
             TestName = "Positive cover radius set")]
         [TestCase(50, ParameterType.HandleBaseRadius, 
@@ -87,13 +83,11 @@ namespace UnitTests
             var testValue = value;
 
             testParameters.SetParameterValueByType(testValue, parameterType);
-
-            //TODO: дубль
+            
             var actualValue = GetPropertyValue(testParameters, parameterType);
             Assert.AreEqual(actualValue, testValue);
         }
-
-        //TODO: RSDN
+        
         [TestCase(ParameterType.CoverRadius, 
             Parameters.MIN_COVER_RADIUS, 
             TestName = "Positive Minimum Value cover radius Get")]
@@ -129,8 +123,7 @@ namespace UnitTests
 
             Assert.AreEqual(expectedMinimumValue, actualMinimumValue);
         }
-
-        //TODO: RSDN
+        
         [TestCase(ParameterType.CoverRadius, 
             Parameters.MAX_COVER_RADIUS, 
             TestName = "Positive Maximum Value cover radius Get")]
