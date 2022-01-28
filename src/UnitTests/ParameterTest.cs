@@ -4,7 +4,6 @@ using BottleParameters;
 
 namespace UnitTests
 {
-    //TODO: RSDN
     [TestFixture]
     public class ParameterTest
     {
