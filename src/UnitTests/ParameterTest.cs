@@ -5,9 +5,6 @@ using BottleParameters;
 namespace UnitTests
 {
     //TODO: RSDN
-    /// <summary>
-    /// Class for testing parameter
-    /// </summary>
     [TestFixture]
     class ParameterTest
     {
@@ -19,7 +16,7 @@ namespace UnitTests
             var expected = new Parameter(
                 minimumParameterValue,
                 maximumParameterValue)
-            { ParameterValue = 30 };
+                { ParameterValue = 30 };
 
             var actual = 30;
 

@@ -60,7 +60,6 @@ namespace BottleBuilder
         /// </summary>
         private void BuildHandle()
         {
-            //TODO: RSDN
             var angle = Math.Atan((_parameters.CoverRadius / 2 - 
                                    _parameters.Width / 8 * 3 - 
                                    _parameters.WallThickness) / 
@@ -150,7 +149,6 @@ namespace BottleBuilder
         /// </summary>
         private void BuildStraightBottleHandle()
         {
-            //TODO: RSDN
             var pressThickness = _parameters.Height / 4 + 
                                  _parameters.WallThickness * 2;
             var angle = 0;
@@ -309,7 +307,6 @@ namespace BottleBuilder
         /// </summary>
         private void BuildBottleTop()
         {
-            //TODO: RSDN
             var circleCentre = new Point2D
             {
                 X = 0, 
@@ -388,10 +385,6 @@ namespace BottleBuilder
         /// </summary>
         private void BuildStraightBottleTop()
         {
-            //TODO: RSDN
-            
-            
-
             var sketchPoint = new Point3D
             {
                 X = _parameters.Width / 2 - _parameters.WallThickness / 2, Y = 0, Z = _parameters.Height / 4 * 3
