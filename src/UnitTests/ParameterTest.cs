@@ -6,7 +6,7 @@ namespace UnitTests
 {
     //TODO: RSDN
     [TestFixture]
-    class ParameterTest
+    public class ParameterTest
     {
         [TestCase(TestName = "Positive parameter setter")]
         public void Parameter_SetCorrectValue()

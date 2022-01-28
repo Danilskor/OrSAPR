@@ -312,6 +312,11 @@ namespace BottleParameters
         }
 
         //TODO: XML
+        /// <summary>
+        /// Set parameter by parameterType
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="parameterType"></param>
         public void SetParameterValueByType(dynamic value, ParameterType parameterType)
         {
             switch (parameterType)
