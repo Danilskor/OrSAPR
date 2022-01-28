@@ -79,7 +79,8 @@ namespace UnitTests
             TestName = "Positive Wall Thickness set")]
         [TestCase(true, ParameterType.IsBottleStraight, 
             TestName = "Positive Is Bottle Straight set")]
-        public void Parameters_SetCorrectParameters(dynamic value, ParameterType parameterType)
+        public void Parameters_SetCorrectParameters(dynamic value, 
+            ParameterType parameterType)
         {
             var testParameters = SetDefaultValues();
 
@@ -117,7 +118,8 @@ namespace UnitTests
         [TestCase(ParameterType.IsBottleStraight, 
             Parameters.NOT_SET_MAX_OR_MIN_VALUE, 
             TestName = "Positive Minimum Value Is Bottle Straight Get")]
-        public void Parameters_GetCorrectMinimumValues(ParameterType parameterType, double minValue)
+        public void Parameters_GetCorrectMinimumValues(ParameterType parameterType, 
+            double minValue)
         {
             var testParameters = new Parameters();
             double expectedMinimumValue = -1;
@@ -153,7 +155,8 @@ namespace UnitTests
         [TestCase(ParameterType.IsBottleStraight, 
             Parameters.NOT_SET_MAX_OR_MIN_VALUE, 
             TestName = "Positive Maximum Value Is Bottle Straight Get")]
-        public void Parameters_GetCorrectMaximumValues(ParameterType parameterType, double maxValue)
+        public void Parameters_GetCorrectMaximumValues(ParameterType parameterType, 
+            double maxValue)
         {
             var testParameters = new Parameters();
             double expectedMaximumValue = -1;
@@ -181,7 +184,8 @@ namespace UnitTests
             };
         }
 
-        private dynamic GetPropertyValue(Parameters parameters, ParameterType parameterType)
+        private dynamic GetPropertyValue(Parameters parameters, 
+            ParameterType parameterType)
         {
             return  parameters.GetType().
                 GetProperty(parameterType.ToString()).
